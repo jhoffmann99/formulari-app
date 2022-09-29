@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule],
   exports: [NavigationComponent, FooterComponent],
