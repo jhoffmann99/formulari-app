@@ -1,4 +1,24 @@
-# PortalFrontend
+# Angular Portal Starterkit
+The code serves as a foundation to create portal applications based on the Angular Web Framework.
+
+# Functionality
+
+- Navigation Component
+- Footer Component
+- Login Page
+- Registration Page
+- Forgot Password Page (Initiation)
+- Reset Password Page
+- Reset Password Success Page
+- Home Page
+- Not Found Page (404-Page)
+- Responsive Design
+- Component Routing
+
+# Libs
+
+- Bootstrap
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
 
