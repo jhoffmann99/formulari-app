@@ -6,6 +6,7 @@ import { NotFoundComponent } from './features/pages/not-found/not-found.componen
 import { RegisterComponent } from './features/pages/register/register.component';
 import { ResetPasswordComponent } from './features/pages/reset-password/reset-password.component';
 import { ForgotPasswordSuccessComponent } from './features/pages/forgot-password-success/forgot-password-success.component';
+import { ForgotPasswordComponent } from './features/pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -13,6 +14,11 @@ const routes: Routes = [
   { path: 'login', pathMatch: 'full', component: LoginComponent },
   { path: 'register', pathMatch: 'full', component: RegisterComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  {
+    path: 'forgot-password',
+    pathMatch: 'full',
+    component: ForgotPasswordComponent,
+  },
   {
     path: 'forgot-password-info',
     pathMatch: 'full',
