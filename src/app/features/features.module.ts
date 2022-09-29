@@ -5,10 +5,17 @@ import { CoreModule } from '../core/core.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent, HomeComponent],
-  imports: [CommonModule, CoreModule, RouterModule],
+  declarations: [
+    NavigationComponent,
+    FooterComponent,
+    HomeComponent,
+    LoginComponent,
+  ],
+  imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule],
   exports: [NavigationComponent, FooterComponent],
 })
 export class FeaturesModule {}
