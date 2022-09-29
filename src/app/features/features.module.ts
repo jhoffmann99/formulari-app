@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { RegisterComponent } from './pages/register/register.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    NotFoundComponent,
   ],
   imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule],
   exports: [NavigationComponent, FooterComponent],
