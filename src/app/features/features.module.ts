@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
+    ResetPasswordComponent,
   ],
   imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule],
   exports: [NavigationComponent, FooterComponent],
