@@ -1,5 +1,5 @@
-# Angular Portal Starterkit
-The code serves as a foundation to create portal applications based on the Angular Web Framework.
+# Formulari app
+The frontend for formulari
 
 # Functionality
 
