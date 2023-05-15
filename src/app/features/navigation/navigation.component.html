@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-3 mb-md-0">
     <div class="container">
         <a class="navbar-brand m-0" routerLink="/home">
-            Company Logo
+            formulari
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,9 +9,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link nav-link-ltr" aria-current="page" routerLink="/home">Home</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-ltr" aria-current="page" routerLink="/">Item2</a>
                 </li>
@@ -22,9 +19,9 @@
             <div class="d-lg-flex justify-content-end align-items-center mb-2 mb-md-0">
                 <ng-container *ngIf="!loggedIn">
                     <a class="btn btn-outline-secondary w-100" routerLink="/register"
-                        style="margin-right: 10px">Register</a>
-                    <a class="btn btn-primary w-100 mt-2 mt-md-0" routerLink="/login">Login</a>
-                    <a class="btn btn-outline-secondary w-100" *ngIf="loggedIn" (click)="logout()">Logout</a>
+                        style="margin-right: 10px">Registrieren</a>
+                    <a class="btn btn-primary w-100 mt-2 mt-md-0" routerLink="/login">Anmelden</a>
+                    <a class="btn btn-outline-secondary w-100" *ngIf="loggedIn" (click)="logout()">Abmelden</a>
                 </ng-container>
                 <div class="dropdown" *ngIf="loggedIn">
 
@@ -45,7 +42,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+                                <a class="dropdown-item" href="#" (click)="logout()">Abmelden</a>
                             </li>
                         </ng-container>
                     </ul>

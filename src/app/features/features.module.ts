@@ -12,6 +12,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ForgotPasswordSuccessComponent } from './pages/forgot-password-success/forgot-password-success.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { AddTemplateComponent } from './add-template/add-template.component';
+import { AddCheckComponent } from './add-check/add-check.component';
+import { ReplyCheckComponent } from './reply-check/reply-check.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     ResetPasswordComponent,
     ForgotPasswordSuccessComponent,
     ForgotPasswordComponent,
+    AddTemplateComponent,
+    AddCheckComponent,
+    ReplyCheckComponent,
   ],
   imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule],
   exports: [NavigationComponent, FooterComponent],

@@ -7,6 +7,9 @@ import { RegisterComponent } from './features/pages/register/register.component'
 import { ResetPasswordComponent } from './features/pages/reset-password/reset-password.component';
 import { ForgotPasswordSuccessComponent } from './features/pages/forgot-password-success/forgot-password-success.component';
 import { ForgotPasswordComponent } from './features/pages/forgot-password/forgot-password.component';
+import { AddTemplateComponent } from './features/add-template/add-template.component';
+import { AddCheckComponent } from './features/add-check/add-check.component';
+import { ReplyCheckComponent } from './features/reply-check/reply-check.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -24,6 +27,9 @@ const routes: Routes = [
     pathMatch: 'full',
     component: ForgotPasswordSuccessComponent,
   },
+  { path: "template/add", component: AddTemplateComponent },
+  { path: "check/add", component: AddCheckComponent },
+  { path: "check/reply", component: ReplyCheckComponent},
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 
