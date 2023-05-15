@@ -1,4 +1,20 @@
 <div class="container my-5">
-    <h2>Neues Template erstellen</h2>
-    <button (click)="addTemplate()">Template erstellen</button>
+    <h2>Neue Vorlage erstellen</h2>
+
+    <form class="row g-3 my-3">
+        <div class="col-12">
+            <label for="templateName" class="form-label">Name der Vorlage</label>
+            <input name="templateName" type="text" class="form-control" id="templateName">
+        </div>
+    </form>
+
+    <h3>Komponenten auswählen</h3>
+    <p>Fügen Sie hier die benötigten Komponenten der Vorlage hinzu.</p>
+    <ng-container *ngIf="components.length == 0">
+        <div class="alert alert-warning" role="alert">
+            Sie haben noch keine Komponenten hinzugefügt.
+        </div>
+    </ng-container>
+
+    <button type="button" class="btn btn-primary w-100" (click)="addTemplate()">Vorlage erstellen</button>
 </div>

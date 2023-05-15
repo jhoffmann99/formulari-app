@@ -1,4 +1,75 @@
 <div class="container my-5">
     <h2>Neuen Check erstellen</h2>
-    <button (click)="addCheck()">Neuen Check erstellen</button>
+
+    <h3>Vorlage & Versand</h3>
+    <p>Bitte wählen Sie hier eine der Vorlagen aus und legen die Versandart fest.</p>
+    <form class="row g-3 my-3">
+        <div class="col-12">
+            <label for="checkName" class="form-label">Check-Name</label>
+            <input name="checkName" type="text" class="form-control" id="checkName">
+        </div>
+        <div class="col-md-6">
+            <label for="templateName" class="form-label">Vorlage</label>
+            <select [(ngModel)]="templateName" [ngModelOptions]="{standalone: true}" class="form-select" id="templateName">
+                <option selected>Bitte auswählen</option>
+                <option *ngFor="let template of templates" [ngValue]="template">{{template}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="transmissionType" class="form-label">Versandart</label>
+            <select [(ngModel)]="transmissionType" [ngModelOptions]="{standalone: true}" class="form-select" id="transmissionType">
+                <option selected>Bitte auswählen</option>
+                <option value="E_MAIL">E-Mail</option>
+                <option value="SMS">SMS</option>
+                <option value="LINK">Link</option>
+            </select>
+        </div>
+    </form>
+
+    <h3>Empfänger</h3>
+    <p>Geben Sie hier einen oder mehrere Empfänger an die den Check erhalten sollen.</p>
+    <ng-container *ngIf="recipients.length == 0">
+        <div class="alert alert-warning" role="alert">
+            Sie haben noch keinen Empfänger hinzugefügt. Bitte fügen Sie mindestens einen Empfänger hinzu.
+        </div>
+    </ng-container>
+    <form #recipient = "ngForm" class="row g-3 my-3">
+        <div class="col-md-2">
+            <label for="salutation" class="form-label">Anrede</label>
+            <select name="salutation" type="email" class="form-select" id="salutation" ngModel>
+                <option selected>Bitte auswählen</option>
+                <option value="MR">Herr</option>
+                <option value="MRS">Frau</option>
+            </select>
+        </div>
+        <div class="col-md-5">
+            <label for="firstname" class="form-label">Vorname</label>
+            <input name="firstName" type="text" class="form-control" id="firstName" ngModel>
+        </div>
+        <div class="col-md-5">
+            <label for="lastName" class="form-label">Nachname</label>
+            <input name="lastName" type="text" class="form-control" id="lastName" ngModel>
+        </div>
+        <div class="col-xl-5">
+            <label for="email" class="form-label">E-Mail</label>
+            <input name="email" type="email" class="form-control" id="email" ngModel>
+        </div>
+        <div class="col-xl-5">
+            <label for="mobilePhone" class="form-label">Mobil</label>
+            <input name="mobilePhone" type="tel" class="form-control" id="mobilePhone" ngModel>
+        </div>
+        <div class="col-12 col-xl-2 add-recipient">
+            <button type="submit" class="btn btn-outline-primary w-100" (click)="addRecipient(recipient)">Empfänger hinzufügen</button>
+        </div>
+    </form>
+    <ng-container *ngFor="let recipient of recipients">
+        <div class="recipient">
+            {{recipient.firstName}}
+            {{recipient.lastName}}
+            {{recipient.email}}
+            {{recipient.mobilePhone}}
+        </div>
+    </ng-container>
+
+    <button type="button" class="btn btn-primary w-100" (click)="addCheck()">Check erstellen</button>
 </div>

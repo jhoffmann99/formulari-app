@@ -6,7 +6,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
@@ -31,7 +31,7 @@ import { ReplyCheckComponent } from './reply-check/reply-check.component';
     AddCheckComponent,
     ReplyCheckComponent,
   ],
-  imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule, FormsModule],
   exports: [NavigationComponent, FooterComponent],
 })
 export class FeaturesModule {}

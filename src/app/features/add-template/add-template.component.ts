@@ -9,6 +9,7 @@ import { createTemplateRequestDto } from '../../core/services/createTemplateRequ
   styleUrls: ['./add-template.component.scss']
 })
 export class AddTemplateComponent {
+  components = [];
 
   constructor(private templateService: TemplateService){}
 

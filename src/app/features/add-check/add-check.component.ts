@@ -1,41 +1,47 @@
-import { CreateCheckRequestDto } from '../../core/services/createCheckRequstDto';
+import { FormArray, FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
+import { CheckRecipientDto, CreateCheckRequestDto } from '../../core/services/createCheckRequstDto';
+import { TemplateService } from '../../core/services/template.service';
 import { CheckService } from './../../core/services/check.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-add-check',
   templateUrl: './add-check.component.html',
   styleUrls: ['./add-check.component.scss']
 })
-export class AddCheckComponent {
-  constructor(private checkService: CheckService) {}
+export class AddCheckComponent implements OnInit {
+
+  templates: string[] = [];
+  recipients: CheckRecipientDto[] = [];
+  checkName: string = "";
+  templateName: string = "";
+  transmissionType: string = "E_MAIL";
+
+  constructor(private checkService: CheckService, private templateService: TemplateService, private fb: FormBuilder) {}
+  
+  ngOnInit(): void {
+    this.templateService.findAll().subscribe(response => {
+      this.templates = response.templates;
+    })  
+  }
 
   addCheck() {
-    console.log("add check");
+    
     const dto: CreateCheckRequestDto = {
-      name: 'Check templateFromAngular',
-      templateName: 'templateFromAngular',
-      transmissionType: 'E_MAIL',
-      recipients: [
-        {
-          "firstName": "Jürgen",
-          "lastName": "Hoffmann",
-          "salutation": "MR",
-          "email": "jhoffmann91@protonmail.com",
-          "mobilePhone": "+4915202418359"
-      },
-      {
-          "firstName": "Desiree",
-          "lastName": "Hoffmann",
-          "salutation": "MRS",
-          "email": "dhoffmann@protonmail.com",
-          "mobilePhone": "+4915202418359"
-      }
-      ]
+      name: this.checkName,
+      templateName: this.templateName,
+      transmissionType: this.transmissionType,
+      recipients: this.recipients
     }
 
     this.checkService.createCheck(dto).subscribe(data => {
       console.log(data)
     });    
+  }
+
+  addRecipient(form: NgForm) {
+    this.recipients.push(form.value);
   }
 }
