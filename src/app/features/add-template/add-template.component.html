@@ -10,11 +10,25 @@
 
     <h3>Komponenten auswählen</h3>
     <p>Fügen Sie hier die benötigten Komponenten der Vorlage hinzu.</p>
+    <div class="components">
+        <button class="component">Text</button>
+        <button class="component">Nummer</button>
+        <button class="component">Ja/Nein</button>
+        <button class="component">Datum</button>
+        <button class="component">Uhrzeit</button>
+        <button class="component">Datum u. Uhrzeit</button>
+        <button class="component">Single-Choice</button>
+        <button class="component">Multiple-Choice</button>
+        <button class="component">Bild</button>
+        <button class="component">Datei</button>
+        <button class="component">Bewertung</button>
+    </div>
     <ng-container *ngIf="components.length == 0">
         <div class="alert alert-warning" role="alert">
             Sie haben noch keine Komponenten hinzugefügt.
         </div>
     </ng-container>
+    
 
     <button type="button" class="btn btn-primary w-100" (click)="addTemplate()">Vorlage erstellen</button>
 </div>

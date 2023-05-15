@@ -1,0 +1,21 @@
+.components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 120px);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.component {
+    background-color: DodgerBlue; /* Blue background */
+    border: none; /* Remove borders */
+    border-radius: none;
+    color: white; /* White text */
+    padding: .25rem .25rem; /* Some padding */
+    font-size: .875rem; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+  
+  /* Darker background on mouse-over */
+  .component:hover {
+    background-color: RoyalBlue;
+  }
