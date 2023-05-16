@@ -30,6 +30,7 @@ form .row {
   margin-bottom: 1.25rem;
   border: 1px solid #eee;
   border-left-width: 0.25rem;
+  border-radius: .875rem;
 }
 
 .bd-callout h4 {
@@ -50,7 +51,7 @@ form .row {
 }
 
 .bd-callout-info {
-  border-left-color: #5bc0de;
+  border-color: #5bc0de;
   background-color: rgba(13, 202, 240, 0.075);
 }
 
@@ -59,7 +60,7 @@ form .row {
 }
 
 .bd-callout-warning {
-  border-left-color: #f0ad4e;
+  border-color: #f0ad4e;
 }
 
 .bd-callout-warning h4 {
@@ -67,7 +68,7 @@ form .row {
 }
 
 .bd-callout-danger {
-  border-left-color: #d9534f;
+  border-color: #d9534f;
 }
 
 .bd-callout-danger h4 {
@@ -75,7 +76,7 @@ form .row {
 }
 
 .bd-callout-primary {
-  border-left-color: #007bff;
+  border-color: #007bff;
 }
 
 .bd-callout-primaryh4 {
@@ -83,7 +84,7 @@ form .row {
 }
 
 .bd-callout-success {
-  border-left-color: #28a745;
+  border-color: #28a745;
 }
 
 .bd-callout-successh4 {
@@ -91,7 +92,7 @@ form .row {
 }
 
 .bd-callout-default {
-  border-left-color: #6c757d;
+  border-color: #6c757d;
 }
 
 .bd-callout-defaulth4 {
