@@ -1,15 +1,26 @@
+.page {
+    background-image: url(/assets/img/teaser-image.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
 .teaser {
     width: 100%;
     max-width: 500px;
-    min-height: 600px;
+    font-size: 50px;
+}
+
+.teaser p {
+    font-size: 1rem;
 }
 
 .teaser-text {
-    font-size: 50px;
     font-weight: bold;
 }
 .typed-element {
-    color: blue;
+    color: #15fdf0;
     text-decoration: underline;
     font-size: 50px;
     line-height: 50px;
