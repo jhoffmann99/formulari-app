@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './features/pages/home/home.component';
-import { LoginComponent } from './features/pages/login/login.component';
-import { NotFoundComponent } from './features/pages/not-found/not-found.component';
-import { RegisterComponent } from './features/pages/register/register.component';
-import { ResetPasswordComponent } from './features/pages/reset-password/reset-password.component';
-import { ForgotPasswordSuccessComponent } from './features/pages/forgot-password-success/forgot-password-success.component';
-import { ForgotPasswordComponent } from './features/pages/forgot-password/forgot-password.component';
-import { AddTemplateComponent } from './features/add-template/add-template.component';
 import { AddCheckComponent } from './features/add-check/add-check.component';
+import { AddTemplateComponent } from './features/add-template/add-template.component';
+import { ForgotPasswordSuccessComponent } from './features/forgot-password-success/forgot-password-success.component';
+import { ForgotPasswordComponent } from './features/forgot-password/forgot-password.component';
+import { HomeComponent } from './features/home/home.component';
+import { LoginComponent } from './features/login/login.component';
+import { NotFoundComponent } from './features/not-found/not-found.component';
+import { RegisterComponent } from './features/register/register.component';
 import { ReplyCheckComponent } from './features/reply-check/reply-check.component';
+import { ResetPasswordComponent } from './features/reset-password/reset-password.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -27,9 +28,9 @@ const routes: Routes = [
     pathMatch: 'full',
     component: ForgotPasswordSuccessComponent,
   },
-  { path: "template/add", component: AddTemplateComponent },
-  { path: "check/add", component: AddCheckComponent },
-  { path: "check/reply", component: ReplyCheckComponent},
+  { path: 'template/add', component: AddTemplateComponent },
+  { path: 'check/add', component: AddCheckComponent },
+  { path: 'check/reply', component: ReplyCheckComponent },
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 

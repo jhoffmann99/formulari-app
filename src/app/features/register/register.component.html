@@ -1,29 +1,29 @@
 <div class="card shadow mb-5 bg-white">
-    <h4 class="card-header">Register</h4>
+    <h4 class="card-header">Registrieren</h4>
     <div class="card-body">
         <form [formGroup]="form" (ngSubmit)="register()">
             <div class="row">
                 <div class="col">
-                    <label class="form-label" for="firstname">Firstname</label>
+                    <label class="form-label" for="firstname">Vorname</label>
                     <input type="text" formControlName="firstname" class="form-control form-control-lg" id="firstname"
                         required />
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label class="form-label" for="lastname">Lastname</label>
+                    <label class="form-label" for="lastname">Nachname</label>
                     <input type="text" formControlName="lastname" class="form-control form-control-lg" id="lastname"
                         required />
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <label class="form-label" for="dateOfBirth">Date of birth</label>
+                    <label class="form-label" for="dateOfBirth">Geburtsdatum</label>
                     <input type="date" formControlName="dateOfBirth" class="form-control form-control-lg"
                         id="dateOfBirth" required />
                 </div>
                 <div class="col-lg-6">
-                    <label class="form-label" for="gender">Gender</label>
+                    <label class="form-label" for="gender">Geschlecht</label>
                     <select class="form-control form-control-lg" formControlName="gender" required id="gender">
                         <option value="male">male</option>
                         <option value="female">female</option>
@@ -40,17 +40,18 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <label class="form-label" for="password">Password</label>
+                    <label class="form-label" for="password">Passwort</label>
                     <input type="password" formControlName="password" class="form-control form-control-lg" id="password"
                         required />
                 </div>
             </div>
             <div class="row">
-                <div class="col d-flex justify-content-end align-items-center">
-                    <small>Already have an account? <a routerLink="../login" class="btn btn-sm btn-link"
-                            style="padding-left: 0">Login</a></small>
-                    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Finish Registration</button>
-
+                <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Jetzt registrieren</button>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center align-items-center">
+                    <small>Sie haben bereits ein Nutzerkonto? <a routerLink="../login" class="btn btn-sm btn-link"
+                            style="padding-left: 0">Anmelden</a></small>
                 </div>
             </div>
         </form>

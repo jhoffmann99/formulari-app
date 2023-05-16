@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { TemplateService } from '../../core/services/template.service';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { createTemplateRequestDto } from '../../core/services/createTemplateRequestDto';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { NotificationService } from '../../core/services/notification.service';
+import { TemplateService } from '../../core/services/template.service';
+
 
 @Component({
   selector: 'app-add-template',
@@ -10,13 +12,14 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AddTemplateComponent {
   form: FormGroup = this.fb.group({
-    templateName: this.fb.control('asdf', { nonNullable: true }),
+    templateName: this.fb.control('', { nonNullable: true }),
     components: this.fb.array([]),
   });
 
   constructor(
     private templateService: TemplateService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private notificationService: NotificationService
   ) {}
 
   get components(): FormArray {
@@ -46,6 +49,7 @@ export class AddTemplateComponent {
         description: null,
         hint: null,
         required: true,
+        length: null,
       })
     );
   }
@@ -71,34 +75,24 @@ export class AddTemplateComponent {
         name: null,
         description: null,
         hint: null,
-        required: false
+        required: false,
       })
     );
   }
 
   addTemplate() {
-    console.log('clicked');
     const dto: createTemplateRequestDto = {
-      templateName: 'templateFromAngular',
-      components: [
-        {
-          type: 'TEXT',
-          name: 'vorname',
-          required: true,
-          description: 'Wie ist dein Name?',
-          hint: 'Name',
-        },
-        {
-          type: 'NUMBER',
-          name: 'Brutto-Jahresgehalt in Euro',
-          required: true,
-          description: 'Wie hoch ist dein aktuelles Brutto-Jahresgehalt?',
-          hint: 'Das Bruttogehalt steht auf deinem Gehaltsnachweis',
-        },
-      ],
+      templateName: this.form.get('templateName').value,
+      components: this.components.getRawValue(),
     };
-    this.templateService.createTemplate(dto).subscribe((data) => {
-      console.log(data);
-    });
+    this.templateService.createTemplate(dto).subscribe(
+      (data) => {
+        this.form.reset();
+        this.notificationService.success('Die Vorlage wurde erstellt');
+      },
+      (error) => {
+        this.notificationService.error('Es ist ein Fehler aufgetreten');
+      }
+    );
   }
 }

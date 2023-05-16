@@ -10,7 +10,7 @@
         </div>
         <ng-container formArrayName="components" *ngFor="let component of components.controls; index as i">
             <fieldset>
-                <legend>{{component.get('type').value}}</legend>
+                <legend>{{component.get('type').value | fieldType }}</legend>
                 <div class="row">
                     <div class="col-lg-2" [formGroupName]="i">
                         <label for="templateName" class="form-label">Feldname</label>

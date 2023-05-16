@@ -1,25 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './pages/home/home.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
-import { NavigationComponent } from './navigation/navigation.component';
-import { FooterComponent } from './footer/footer.component';
-import { RouterModule } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './pages/register/register.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { ForgotPasswordSuccessComponent } from './pages/forgot-password-success/forgot-password-success.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { AddTemplateComponent } from './add-template/add-template.component';
 import { AddCheckComponent } from './add-check/add-check.component';
+import { AddTemplateComponent } from './add-template/add-template.component';
+import { ForgotPasswordSuccessComponent } from './forgot-password-success/forgot-password-success.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RegisterComponent } from './register/register.component';
 import { ReplyCheckComponent } from './reply-check/reply-check.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
 
 @NgModule({
   declarations: [
-    NavigationComponent,
-    FooterComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -31,7 +27,7 @@ import { ReplyCheckComponent } from './reply-check/reply-check.component';
     AddCheckComponent,
     ReplyCheckComponent,
   ],
-  imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule, FormsModule],
-  exports: [NavigationComponent, FooterComponent],
+  imports: [CommonModule, CoreModule, ReactiveFormsModule, FormsModule],
+  exports: [],
 })
 export class FeaturesModule {}

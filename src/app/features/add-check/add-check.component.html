@@ -10,14 +10,16 @@
         </div>
         <div class="col-md-6">
             <label for="templateName" class="form-label">Vorlage</label>
-            <select [(ngModel)]="templateName" [ngModelOptions]="{standalone: true}" class="form-select" id="templateName">
+            <select [(ngModel)]="templateName" [ngModelOptions]="{standalone: true}" class="form-select"
+                id="templateName">
                 <option selected>Bitte auswählen</option>
                 <option *ngFor="let template of templates" [ngValue]="template">{{template}}</option>
             </select>
         </div>
         <div class="col-md-6">
             <label for="transmissionType" class="form-label">Versandart</label>
-            <select [(ngModel)]="transmissionType" [ngModelOptions]="{standalone: true}" class="form-select" id="transmissionType">
+            <select [(ngModel)]="transmissionType" [ngModelOptions]="{standalone: true}" class="form-select"
+                id="transmissionType">
                 <option selected>Bitte auswählen</option>
                 <option value="E_MAIL">E-Mail</option>
                 <option value="SMS">SMS</option>
@@ -33,7 +35,7 @@
             Sie haben noch keinen Empfänger hinzugefügt. Bitte fügen Sie mindestens einen Empfänger hinzu.
         </div>
     </ng-container>
-    <form #recipient = "ngForm" class="row g-3 my-3">
+    <form #recipient="ngForm" class="row g-3 my-3">
         <div class="col-md-2">
             <label for="salutation" class="form-label">Anrede</label>
             <select name="salutation" type="email" class="form-select" id="salutation" ngModel>
@@ -59,17 +61,30 @@
             <input name="mobilePhone" type="tel" class="form-control" id="mobilePhone" ngModel>
         </div>
         <div class="col-12 col-xl-2 add-recipient">
-            <button type="submit" class="btn btn-outline-primary w-100" (click)="addRecipient(recipient)">Empfänger hinzufügen</button>
+            <button type="submit" class="btn btn-outline-primary w-100" (click)="addRecipient(recipient)">Empfänger
+                hinzufügen</button>
         </div>
     </form>
-    <ng-container *ngFor="let recipient of recipients">
-        <div class="recipient">
-            {{recipient.firstName}}
-            {{recipient.lastName}}
-            {{recipient.email}}
-            {{recipient.mobilePhone}}
-        </div>
-    </ng-container>
+    <table class="table" *ngIf="recipients.length > 0">
+        <thead>
+            <tr>
+                <th scope="col">Vorname</th>
+                <th scope="col">Nachname</th>
+                <th scope="col">Email-Adresse</th>
+                <th scope="col">Mobile Rufnummer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let recipient of recipients">
+                <tr>
+                    <td scope="row">{{recipient.firstName}}</td>
+                    <td scope="row">{{recipient.lastName}}</td>
+                    <td scope="row">{{recipient.email}}</td>
+                    <td scope="row">{{recipient.mobilePhone}}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
 
     <button type="button" class="btn btn-primary w-100" (click)="addCheck()">Check erstellen</button>
 </div>
