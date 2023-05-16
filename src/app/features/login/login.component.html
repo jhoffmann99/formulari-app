@@ -1,6 +1,6 @@
-<div class="card shadow my-5 bg-white">
-    <h4 class="card-header">Anmelden</h4>
+<div class="login">
     <div class="card-body">
+        <h1 class="text-center">Bei formulari anmelden</h1>
         <form [formGroup]="form" (ngSubmit)="login()">
             <div class="row">
                 <div class="col">
@@ -18,7 +18,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary w-100" [disabled]="!form.valid">
+                    <button class="btn btn-lg btn-primary w-100" [disabled]="!form.valid">
                         Anmelden
                     </button>
                 </div>

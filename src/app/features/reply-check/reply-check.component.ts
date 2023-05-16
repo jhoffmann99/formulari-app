@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckService } from '../../core/services/check.service';
 import { ReplyCheckRequestDto } from '../../core/services/ReplyCheckRequestDto';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
-import { TemplateComponent, createTemplateRequestDto } from '../../core/services/templateRequestDto';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { TemplateComponent } from '../../core/services/templateRequestDto';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { NotificationService } from '../../core/services/notification.service';
 
 @Component({
   selector: 'app-reply-check',
@@ -24,7 +25,9 @@ export class ReplyCheckComponent implements OnInit {
   constructor(
     private checkService: CheckService,
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +47,8 @@ export class ReplyCheckComponent implements OnInit {
         data.components.forEach(component => {
           this.addComponent(component);
         });
+      }, error => {
+        this.router.navigateByUrl('/error')
       });
   }
 
@@ -52,81 +57,34 @@ export class ReplyCheckComponent implements OnInit {
   }
 
   addComponent(component: TemplateComponent) {
-    switch (component.type) {
-      case 'TEXT':
-        this.addTextField(component);
-        break;
-      case 'NUMBER':
-        this.addNumberField(component);
-        break;
-      case 'DATE':
-        this.addDateField(component);
-        break;
-    }
+    const type = component.type;    
+    
+    this.addTextField(component);
   }
 
   addTextField(component: TemplateComponent) {
-    this.form.addControl(component.name, new FormControl('', {nonNullable: component.required}));
-     this.fb.control('', {nonNullable: component.required})
-    this.data.push(
-      this.fb.group({
-        type: 'TEXT',
-        multiLine: component.multiLine,
-        name: component.name,
-        description: component.description,
-        hint: component.hint,
-        required: component.required,
-        length: component.length,
-      })
-    );
+    this.data.push( this.fb.group({
+      name: component.name,
+      value: ''
+    }))
+
   }
 
-  addNumberField(component: TemplateComponent) {
-    this.data.push(
-      this.fb.group({
-        type: 'NUMBER',
-        name: component.name,
-        description: component.description,
-        hint: component.hint,
-        required: component.required,
-        min: component.min,
-        max: component.max,
-      })
-    );
-  }
-
-  addDateField(component: TemplateComponent) {
-    this.data.push(
-      this.fb.group({
-        type: 'DATE',
-        name: component.name,
-        description: component.description,
-        hint: component.hint,
-        required: component.required,
-      })
-    );
-  }
-
-  replyCheck(form) {
-/*     const dto: ReplyCheckRequestDto = {
-      uid: '8b56decf-bc5a-411c-bec7-7752b38615ac',
-      data: [
-        {
-          name: 'vorname',
-          type: 'TEXT',
-          value: 'Jürgen',
-        },
-        {
-          name: 'Brutto-Jahresgehalt in Euro',
-          type: 'NUMBER',
-          value: 70000,
-        },
-      ],
+ 
+  replyCheck() {
+    const dto: ReplyCheckRequestDto = {
+      uid: this.uid,
+      data: this.data.value
     };
 
     this.checkService.replyCheck(dto).subscribe((data) => {
-      console.log(data);
-    }); */
-    console.log(form.value);
+      this.notificationService.success('Das Formular wurde erfolgreich abgesendet');
+    }, error => {
+      this.notificationService.error('Es ist ein Fehler aufgetreten');
+    });
+  }
+
+  valueChanged(value, index) {    
+    this.data.at(index).get('value').setValue(value);
   }
 }

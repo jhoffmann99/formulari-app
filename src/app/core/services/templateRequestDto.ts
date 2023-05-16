@@ -12,5 +12,7 @@ export interface TemplateComponent {
     min?: number,
     max?: number,
     multiLine?: boolean,
-    length?: boolean;
+    length?: number;
+    fieldType: string;
+    value?: any;
 }
