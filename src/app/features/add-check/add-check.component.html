@@ -6,7 +6,7 @@
     <form class="row g-3 my-3">
         <div class="col-12">
             <label for="checkName" class="form-label">Check-Name</label>
-            <input name="checkName" type="text" class="form-control" id="checkName">
+            <input name="name" type="text" class="form-control" id="name" [(ngModel)]="checkName">
         </div>
         <div class="col-md-6">
             <label for="templateName" class="form-label">Vorlage</label>
@@ -57,7 +57,7 @@
             <input name="email" type="email" class="form-control" id="email" ngModel>
         </div>
         <div class="col-xl-5">
-            <label for="mobilePhone" class="form-label">Mobil</label>
+            <label for="mobilePhone" class="form-label">Mobile Rufnummer</label>
             <input name="mobilePhone" type="tel" class="form-control" id="mobilePhone" ngModel>
         </div>
         <div class="col-12 col-xl-2 add-recipient">

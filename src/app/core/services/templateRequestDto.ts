@@ -8,5 +8,9 @@ export interface TemplateComponent {
     type: string,
     required?: boolean,
     description: string,
-    hint: string;
+    hint: string,
+    min?: number,
+    max?: number,
+    multiLine?: boolean,
+    length?: boolean;
 }

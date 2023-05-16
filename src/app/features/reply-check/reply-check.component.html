@@ -1,4 +1,27 @@
 <div class="container my-5">
-    <h2>Reply Check</h2>
-    <button (click)="replyCheck()">Check beantworten</button>
+    <h2>{{templateName}}</h2>
+    <form #form="ngForm" class="g-3 my-3">
+        <ng-container *ngFor="let component of templateComponents; index as i">
+            <fieldset>
+                <div class="row">
+                    <div class="col" form>
+                        <ng-container *ngIf="component.type == 'TEXT'">
+                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
+                            <input class="form-control" type="text" [id]="component.name" [maxLength]="component.length" [name]="component.name" [required]="component.required" ngModel>
+                        </ng-container>
+                        <ng-container *ngIf="component.type == 'NUMBER'">
+                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
+                            <input class="form-control" type="number" [min]="component.min" [max]="component.max" [id]="component.name" [name]="component.name" [required]="component.required" ngModel>
+                        </ng-container>
+                        <ng-container *ngIf="component.type == 'DATE'">
+                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
+                            <input class="form-control" type="date" [id]="component.name" [name]="component.name" [required]="component.required" ngModel>
+                        </ng-container>
+                    </div>
+                </div>
+          
+        </fieldset>
+        </ng-container>
+    </form>
+    <button type="submit" class="btn btn-primary w-100" (click)="replyCheck(form)">Formular absenden</button>
 </div>

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { createTemplateRequestDto } from '../../core/services/createTemplateRequestDto';
+import { createTemplateRequestDto } from '../../core/services/templateRequestDto';
 import { NotificationService } from '../../core/services/notification.service';
 import { TemplateService } from '../../core/services/template.service';
-
 
 @Component({
   selector: 'app-add-template',

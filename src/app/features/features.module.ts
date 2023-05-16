@@ -12,6 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { ReplyCheckComponent } from './reply-check/reply-check.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     AddCheckComponent,
     ReplyCheckComponent,
   ],
-  imports: [CommonModule, CoreModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule, FormsModule],
   exports: [],
 })
 export class FeaturesModule {}

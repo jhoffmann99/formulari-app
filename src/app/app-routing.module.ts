@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   { path: 'template/add', component: AddTemplateComponent },
   { path: 'check/add', component: AddCheckComponent },
-  { path: 'check/reply', component: ReplyCheckComponent },
+  { path: 'check/reply/:checkId', component: ReplyCheckComponent },
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 

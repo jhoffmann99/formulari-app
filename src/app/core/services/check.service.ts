@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { createTemplateRequestDto } from './createTemplateRequestDto';
+import { createTemplateRequestDto } from './templateRequestDto';
 import { CreateCheckRequestDto } from './createCheckRequstDto';
 import { ReplyCheckRequestDto } from './ReplyCheckRequestDto';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CheckService {
   private apiUrl = 'http://localhost:3000/check';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   createCheck(dto: CreateCheckRequestDto) {
     return this.http.post<any>(this.apiUrl, dto);
@@ -18,5 +19,9 @@ export class CheckService {
 
   replyCheck(dto: ReplyCheckRequestDto) {
     return this.http.post<any>(this.apiUrl + '/reply', dto);
+  }
+
+  getTemplateForCheckUid(checkUid: string):Observable<createTemplateRequestDto> {
+    return this.http.get<createTemplateRequestDto>(this.apiUrl + '/template/' + checkUid);
   }
 }

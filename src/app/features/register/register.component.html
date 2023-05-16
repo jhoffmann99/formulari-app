@@ -1,52 +1,51 @@
+<div class="intro my-5 text-center">
+    <h1 class="">formulari 30 Tage kostenlos testen.</h1>
+    <p>Formulari ist die Komplettlösung zur einfachen und komfortablen Kundendatenabfrage. Registrieren Sie sich jetzt und testen Sie formulari kostenlos. Es sind keine Bankdaten erforderlich. Die Testphase endet automatisch. </p>
+</div>
+
 <div class="card shadow mb-5 bg-white">
-    <h4 class="card-header">Registrieren</h4>
     <div class="card-body">
+        <h4>Registrierung</h4>
         <form [formGroup]="form" (ngSubmit)="register()">
-            <div class="row">
-                <div class="col">
+            <div class="row g-3">
+                <div class="col-lg-3">
+                    <label class="form-label" for="gender">Anrede</label>
+                    <select class="form-control form-control-lg" formControlName="gender" required id="gender">
+                        <option value="male">Herr</option>
+                        <option value="female">Frau</option>
+                    </select>
+                </div>
+                <div class="col-lg-9">
                     <label class="form-label" for="firstname">Vorname</label>
                     <input type="text" formControlName="firstname" class="form-control form-control-lg" id="firstname"
                         required />
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
+                <div class="col-lg-8">
                     <label class="form-label" for="lastname">Nachname</label>
                     <input type="text" formControlName="lastname" class="form-control form-control-lg" id="lastname"
                         required />
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label class="form-label" for="dateOfBirth">Geburtsdatum</label>
                     <input type="date" formControlName="dateOfBirth" class="form-control form-control-lg"
                         id="dateOfBirth" required />
                 </div>
-                <div class="col-lg-6">
-                    <label class="form-label" for="gender">Geschlecht</label>
-                    <select class="form-control form-control-lg" formControlName="gender" required id="gender">
-                        <option value="male">male</option>
-                        <option value="female">female</option>
-                        <option value="diverse">diverse</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
+                <div class="col-12">
                     <label class="form-label" for="email">E-Mail</label>
                     <input type="text" formControlName="email" class="form-control form-control-lg" id="email"
                         required />
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
+                <div class="col-12">
                     <label class="form-label" for="password">Passwort</label>
                     <input type="password" formControlName="password" class="form-control form-control-lg" id="password"
                         required />
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Jetzt registrieren</button>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="!form.valid">Jetzt registrieren</button>
+                </div>
+                
             </div>
             <div class="row">
                 <div class="col d-flex justify-content-center align-items-center">
