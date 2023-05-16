@@ -1,20 +1,75 @@
 <div class="container my-5">
     <h2>Neue Vorlage erstellen</h2>
 
-    <form class="row g-3 my-3">
-        <div class="col-12">
-            <label for="templateName" class="form-label">Name der Vorlage</label>
-            <input name="templateName" type="text" class="form-control" id="templateName">
+    <form class="g-3 my-3" [formGroup]="form">
+        <div class="row">
+            <div class="col-12">
+                <label for="templateName" class="form-label">Name der Vorlage</label>
+                <input name="templateName" type="text" class="form-control" id="templateName" formControlName="templateName">
+            </div>
         </div>
+        <ng-container formArrayName="components" *ngFor="let component of components.controls; index as i">
+            <fieldset>
+                <legend>{{component.get('type').value}}</legend>
+                <div class="row">
+                    <div class="col-lg-2" [formGroupName]="i">
+                        <label for="templateName" class="form-label">Feldname</label>
+                        <input class="form-control" type="text" id="name" name="name" formControlName="name">
+                    </div>
+                    <div class="col-lg-4" [formGroupName]="i">
+                        <label for="description" class="form-label">Beschreibung</label>
+                        <input class="form-control" type="text" id="description" name="description" formControlName="description">
+                    </div>
+                    <div class="col-lg-4" [formGroupName]="i">
+                        <label for="hint" class="form-label">Hinweis</label>
+                        <input class="form-control" type="text" id="hint" name="hint" formControlName="hint">
+                    </div>
+                    <div class="col-lg-2 pflichtfeld" [formGroupName]="i">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="required" name="required" formControlName="required">
+                            <label class="form-check-label" for="required">
+                              Pflichtfeld
+                            </label>
+                          </div>
+                    </div>
+                    <ng-container *ngIf="component.get('type').value === 'TEXT'">
+                        <div class="col-lg-2 pflichtfeld" [formGroupName]="i">
+                            <div class="form-check">
+                                
+                                <input class="form-check-input" type="checkbox" value="" id="multiLine" name="multiLine" formControlName="multiLine">
+                                <label class="form-check-label" for="multiLine">
+                                  mehrzeilig
+                                </label>
+                              </div>
+                        </div>
+                        <div class="col-lg-2" [formGroupName]="i">
+                            <label for="length" class="form-label">Länge</label>
+                            <input class="form-control" type="number" id="length" name="length" formControlName="length">
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="component.get('type').value === 'NUMBER'">
+                       
+                        <div class="col-lg-2" [formGroupName]="i">
+                            <label for="min" class="form-label">min</label>
+                            <input class="form-control" type="number" id="min" name="min" formControlName="min">
+                        </div>
+                        <div class="col-lg-2" [formGroupName]="i">
+                            <label for="max" class="form-label">max</label>
+                            <input class="form-control" type="number" id="max" name="max" formControlName="max">
+                        </div>
+                    </ng-container>
+                </div>
+          
+        </fieldset>
+        </ng-container>
     </form>
-
-    <h3>Komponenten auswählen</h3>
+    <h3>Komponenten hinzufügen</h3>
     <p>Fügen Sie hier die benötigten Komponenten der Vorlage hinzu.</p>
     <div class="components">
-        <button class="component">Text</button>
-        <button class="component">Nummer</button>
+        <button class="component" (click)="addComponent('TEXT')">Text</button>
+        <button class="component" (click)="addComponent('NUMBER')">Zahl</button>
         <button class="component">Ja/Nein</button>
-        <button class="component">Datum</button>
+        <button class="component" (click)="addComponent('DATE')">Datum</button>
         <button class="component">Uhrzeit</button>
         <button class="component">Datum u. Uhrzeit</button>
         <button class="component">Single-Choice</button>
