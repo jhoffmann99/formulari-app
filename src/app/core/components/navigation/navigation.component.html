@@ -9,47 +9,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/">Posteingang</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-ltr" aria-current="page" routerLink="/template/add">Vorlagen</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/check/add">Neuer Check</a>
-                </li>
+                <ng-container *ngIf="this.loggedIn$ | async">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/">Posteingang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-ltr" aria-current="page" routerLink="/template/add">Vorlagen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/check/add">Neuer Check</a>
+                    </li>
+                </ng-container>
+
             </ul>
             <div class="d-lg-flex justify-content-end align-items-center mb-2 mb-md-0">
-                <ng-container *ngIf="!loggedIn">
+                <ng-container *ngIf="!(this.loggedIn$ | async)">
                     <a class="btn btn-outline-secondary w-100" routerLink="/register"
                         style="margin-right: 10px">Registrieren</a>
                     <a class="btn btn-primary w-100 mt-2 mt-md-0" routerLink="/login">Anmelden</a>
-                    <a class="btn btn-lg btn-outline-secondary w-100" *ngIf="loggedIn" (click)="logout()">Abmelden</a>
-                </ng-container>
-                <div class="dropdown" *ngIf="loggedIn">
 
-                    <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg class="bi d-block mx-auto mb-1" width="32" height="32">
-                            <use xlink:href="#people-circle" />
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" routerLink="/">Item1</a>
-                        </li>
-                        <li><a class="dropdown-item" routerLink="/">Item2</a>
-                        </li>
-                        <li><a class="dropdown-item" routerLink="/">Item3</a></li>
-                        <li><a class="dropdown-item" routerLink="/">Item4</a></li>
-                        <ng-container *ngIf="loggedIn">
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#" (click)="logout()">Abmelden</a>
-                            </li>
-                        </ng-container>
-                    </ul>
-                </div>
+                </ng-container>
+                <ng-container *ngIf="this.loggedIn$ | async">
+                    <a class="btn btn-outline-secondary w-100" *ngIf="this.loggedIn$ | async"
+                        (click)="logout()">Abmelden</a>
+                </ng-container>
+
             </div>
 
         </div>

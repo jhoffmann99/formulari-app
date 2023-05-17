@@ -6,6 +6,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { FooterComponent } from './components/footer/footer.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterModule } from '@angular/router';
+import { UniversalAppInterceptor } from './utils/UniversalAppInterceptor';
 
 @NgModule({
   declarations: [
@@ -16,5 +17,12 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [CommonModule, HttpClientModule, RouterModule],
   exports: [NavigationComponent, FooterComponent, FieldTypePipe, NotificationComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UniversalAppInterceptor,
+      multi: true,
+    },
+  ]
 })
 export class CoreModule {}

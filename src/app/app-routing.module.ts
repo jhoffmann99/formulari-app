@@ -10,6 +10,7 @@ import { NotFoundComponent } from './features/not-found/not-found.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ReplyCheckComponent } from './features/reply-check/reply-check.component';
 import { ResetPasswordComponent } from './features/reset-password/reset-password.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -28,9 +29,9 @@ const routes: Routes = [
     pathMatch: 'full',
     component: ForgotPasswordSuccessComponent,
   },
-  { path: 'template/add', component: AddTemplateComponent },
-  { path: 'check/add', component: AddCheckComponent },
-  { path: 'check/reply/:checkId', component: ReplyCheckComponent },
+  { path: 'template/add', component: AddTemplateComponent, canActivate: [AuthGuard] },
+  { path: 'check/add', component: AddCheckComponent, canActivate: [AuthGuard] },
+  { path: 'check/reply/:checkId', component: ReplyCheckComponent, canActivate: [AuthGuard] },
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -7,11 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  loggedIn: boolean = false;
+  loggedIn$: Observable<boolean>;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loggedIn$ = this.authService.isAuthenticated$;
+  }
 
-  logout() {}
+  logout() {
+    this.authService.signOut().subscribe((resp) => {
+      this.authService.setAuthenticated(false);
+}, error => {
+  console.log(error);
+})
+  }
 }

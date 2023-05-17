@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 interface LoginForm {
   email: FormControl<string>;
@@ -18,15 +19,14 @@ export class LoginComponent implements OnInit {
     password: new FormControl(),
   });
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
   login() {
         this.authService.signIn(this.form.value).subscribe((resp) => {
-          
-          
-          console.log(resp)
+          this.authService.setAuthenticated(true);
+          this.router.navigateByUrl('home');
     }, error => {
       console.log(error);
     })
