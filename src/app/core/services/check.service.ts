@@ -14,14 +14,14 @@ export class CheckService {
   constructor(private http: HttpClient) {}
 
   createCheck(dto: CreateCheckRequestDto) {
-    return this.http.post<any>(this.apiUrl, dto);
+    return this.http.post<any>(this.apiUrl, dto, {withCredentials: true});
   }
 
   replyCheck(dto: ReplyCheckRequestDto) {
-    return this.http.post<any>(this.apiUrl + '/reply', dto);
+    return this.http.post<any>(this.apiUrl + '/reply', dto, {withCredentials: true});
   }
 
   getTemplateForCheckUid(checkUid: string):Observable<createTemplateRequestDto> {
-    return this.http.get<createTemplateRequestDto>(this.apiUrl + '/template/' + checkUid);
+    return this.http.get<createTemplateRequestDto>(this.apiUrl + '/template/' + checkUid, {withCredentials: true});
   }
 }

@@ -11,10 +11,10 @@ export class TemplateService {
   constructor(private http: HttpClient) {}
 
   createTemplate(dto: createTemplateRequestDto) {
-    return this.http.post<any>(this.apiUrl, dto);
+    return this.http.post<any>(this.apiUrl, dto, {withCredentials: true});
   }
 
   findAll() {
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(this.apiUrl, {withCredentials: true});
   }
 }

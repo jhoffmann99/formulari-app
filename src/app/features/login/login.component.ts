@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../../core/services/auth.service';
 
 interface LoginForm {
-  identifier: FormControl<string>;
+  email: FormControl<string>;
   password: FormControl<string>;
 }
 
@@ -13,13 +14,21 @@ interface LoginForm {
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup<LoginForm>({
-    identifier: new FormControl(),
+    email: new FormControl(),
     password: new FormControl(),
   });
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
-  login() {}
+  login() {
+        this.authService.signIn(this.form.value).subscribe((resp) => {
+          
+          
+          console.log(resp)
+    }, error => {
+      console.log(error);
+    })
+  }
 }
