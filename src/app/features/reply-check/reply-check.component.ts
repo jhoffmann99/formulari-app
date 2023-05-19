@@ -79,6 +79,7 @@ export class ReplyCheckComponent implements OnInit {
 
     this.checkService.replyCheck(dto).subscribe((data) => {
       this.notificationService.success('Das Formular wurde erfolgreich abgesendet');
+      this.router.navigateByUrl('check/submitted');
     }, error => {
       this.notificationService.error('Es ist ein Fehler aufgetreten');
     });

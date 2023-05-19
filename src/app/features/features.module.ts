@@ -13,6 +13,11 @@ import { RegisterComponent } from './register/register.component';
 import { ReplyCheckComponent } from './reply-check/reply-check.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RouterModule } from '@angular/router';
+import { CheckSubmittedComponent } from './check-submitted/check-submitted.component';
+import { OverviewComponent } from './overview/overview.component';
+import { MenuComponent } from './overview/menu/menu.component';
+import { ChecksComponent } from './overview/checks/checks.component';
+import { CheckDetailComponent } from './overview/check-detail/check-detail.component';
 
 
 @NgModule({
@@ -27,6 +32,11 @@ import { RouterModule } from '@angular/router';
     AddTemplateComponent,
     AddCheckComponent,
     ReplyCheckComponent,
+    CheckSubmittedComponent,
+    OverviewComponent,
+    MenuComponent,
+    ChecksComponent,
+    CheckDetailComponent,
   ],
   imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule, FormsModule],
   exports: [],

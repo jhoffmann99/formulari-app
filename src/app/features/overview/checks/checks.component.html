@@ -1,0 +1,12 @@
+<ul class="list-group list-group-flush">
+    <button class="list-group-item list-group-item-action" *ngFor="let check of checks">
+        <div>
+            <div class="column-1"></div>
+            <div class="column-2">
+                <div>{{check.check.name}}</div>
+                <div>{{check.firstName + ' ' + check.lastName}}</div>
+            </div>
+        </div>
+    </button>
+   
+</ul>

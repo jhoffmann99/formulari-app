@@ -4,6 +4,7 @@ import { createTemplateRequestDto } from './templateRequestDto';
 import { CreateCheckRequestDto } from './createCheckRequstDto';
 import { ReplyCheckRequestDto } from './ReplyCheckRequestDto';
 import { Observable } from 'rxjs';
+import { CheckReply } from './check-replies';
 
 @Injectable({
   providedIn: 'root',
@@ -18,10 +19,14 @@ export class CheckService {
   }
 
   replyCheck(dto: ReplyCheckRequestDto) {
-    return this.http.post<any>(this.apiUrl + '/reply', dto, {withCredentials: true});
+    return this.http.post<any>(this.apiUrl + '/reply', dto);
   }
 
   getTemplateForCheckUid(checkUid: string):Observable<createTemplateRequestDto> {
-    return this.http.get<createTemplateRequestDto>(this.apiUrl + '/template/' + checkUid, {withCredentials: true});
+    return this.http.get<createTemplateRequestDto>(this.apiUrl + '/template/' + checkUid);
+  }
+
+  getInbox() {
+    return this.http.get<CheckReply[]>(this.apiUrl + "/inbox");
   }
 }
