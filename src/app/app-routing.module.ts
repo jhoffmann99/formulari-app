@@ -11,6 +11,8 @@ import { RegisterComponent } from './features/register/register.component';
 import { ReplyCheckComponent } from './features/reply-check/reply-check.component';
 import { ResetPasswordComponent } from './features/reset-password/reset-password.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { CheckSubmittedComponent } from './features/check-submitted/check-submitted.component';
+import { OverviewComponent } from './features/overview/overview.component';
 
 
 const routes: Routes = [
@@ -29,9 +31,11 @@ const routes: Routes = [
     pathMatch: 'full',
     component: ForgotPasswordSuccessComponent,
   },
+  {path: 'dashboard', component: OverviewComponent},
   { path: 'template/add', component: AddTemplateComponent, canActivate: [AuthGuard] },
   { path: 'check/add', component: AddCheckComponent, canActivate: [AuthGuard] },
-  { path: 'check/reply/:checkId', component: ReplyCheckComponent, canActivate: [AuthGuard] },
+  { path: 'check/reply/:checkId', component: ReplyCheckComponent },
+  { path: 'check/submitted', component: CheckSubmittedComponent },
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 
