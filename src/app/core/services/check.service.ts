@@ -29,4 +29,8 @@ export class CheckService {
   getInbox() {
     return this.http.get<CheckReply[]>(this.apiUrl + "/inbox");
   }
+
+  getOutbox() {
+    return this.http.get<CheckReply[]>(this.apiUrl + "/outbox");
+  }
 }

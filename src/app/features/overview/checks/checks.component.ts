@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CheckReply } from '../../../core/services/check-replies';
 
 @Component({
@@ -7,7 +7,20 @@ import { CheckReply } from '../../../core/services/check-replies';
   styleUrls: ['./checks.component.scss']
 })
 export class ChecksComponent {
+
+  public activeButton = '';
+
   @Input()
   checks: CheckReply[] = [];
   
+
+  @Output()
+  checkSelected = new EventEmitter<string>();
+
+  select(uid: string) {
+ 
+    this.activeButton = uid;
+    this.checkSelected.next(uid);
+    
+  }
 }

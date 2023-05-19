@@ -11,6 +11,8 @@ export class OverviewComponent implements OnInit {
 
   checkReplies: CheckReply[] = [];
 
+  checkReply: CheckReply = null;
+
   constructor(private checkService: CheckService) { }
   
   ngOnInit(): void {
@@ -18,6 +20,30 @@ export class OverviewComponent implements OnInit {
   }
 
   loadChecks(selectedButton: string) {
-    console.log(selectedButton)
+    switch (selectedButton) {
+      case 'menu-btn-eingang':
+        this.loadInbox();
+        break;
+      case 'menu-btn-ausgang':
+        this.loadOutbox();
+        break;
+    }
+  }
+
+  loadInbox() {
+    this.checkService.getInbox().subscribe(response => {
+      this.checkReplies = response;
+    })
+  }
+
+  loadOutbox() {
+    this.checkService.getOutbox().subscribe(response => {
+      this.checkReplies = response;
+    })
+  }
+
+  showDetails(uid: string) {
+    this.checkReply = this.checkReplies.find(reply => reply.uid === uid);
   }
 }
+

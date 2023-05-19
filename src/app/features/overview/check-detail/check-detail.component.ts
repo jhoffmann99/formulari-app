@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CheckReply } from '../../../core/services/check-replies';
 
 @Component({
   selector: 'app-check-detail',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./check-detail.component.scss']
 })
 export class CheckDetailComponent {
-
+@Input()
+  check: CheckReply = null;
 }

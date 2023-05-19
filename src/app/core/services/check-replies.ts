@@ -1,13 +1,15 @@
 export interface CheckReply {
     check: Check,
     completed: boolean,
-    data: [],
+    data: any,
     email: string,
     firstName: string,
     lastName: string,
     mobilePhone: string,
     salutation: string,
-    uid: string
+    uid: string,
+    answerAt: string,
+    createdAt: string
 }
 
 export interface Check {

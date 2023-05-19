@@ -1,12 +1,20 @@
-<ul class="list-group list-group-flush">
-    <button class="list-group-item list-group-item-action" *ngFor="let check of checks">
-        <div>
-            <div class="column-1"></div>
-            <div class="column-2">
-                <div>{{check.check.name}}</div>
-                <div>{{check.firstName + ' ' + check.lastName}}</div>
+<ng-container *ngIf="checks.length > 0; else noData">
+    <ul class="list-group list-group-flush">
+        <button [id]="check.uid" class="list-group-item list-group-item-action" [class.active]="check.uid == activeButton" *ngFor="let check of checks"  (click)="select(check.uid)">
+            <div>
+                <div class="column-1"></div>
+                <div class="column-2">
+                    <div class="check-title">{{check.check.name}}</div>
+                    <div class="check-recipient">{{check.firstName + ' ' + check.lastName}} <span
+                            class="text-right">{{check.answerAt ? (check.answerAt | date : 'dd.MM.yyyy'): (check.createdAt |
+                            date : 'dd.MM.yyyy')}}</span></div>
+                </div>
             </div>
-        </div>
-    </button>
-   
-</ul>
+        </button>
+    </ul>
+</ng-container>
+<ng-template #noData>
+    <div class="grid">
+        <div class="no-data">Das Postfach ist leer</div>
+    </div>
+</ng-template>
