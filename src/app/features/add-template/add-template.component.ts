@@ -36,7 +36,49 @@ export class AddTemplateComponent {
       case 'DATE':
         this.addDateField();
         break;
+      case 'TIME':
+        this.addTimeField();
+        break;
+        case 'DATE_TIME':
+          this.addDateTimeField();
+        break;
+      case 'YES_NO':
+        this.addYesNoField();
+        break;
     }
+  }
+  addYesNoField() {
+    this.components.push(
+      this.fb.group({
+        type: 'YES_NO',
+        name: null,
+        description: null,
+        hint: null,
+        required: true,
+      })
+    );
+  }
+  addDateTimeField() {
+    this.components.push(
+      this.fb.group({
+        type: 'DATE_TIME',
+        name: null,
+        description: null,
+        hint: null,
+        required: true,
+      })
+    );
+  }
+  addTimeField() {
+    this.components.push(
+      this.fb.group({
+        type: 'TIME',
+        name: null,
+        description: null,
+        hint: null,
+        required: true,
+      })
+    );
   }
 
   addTextField() {

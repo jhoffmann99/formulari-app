@@ -17,6 +17,18 @@
                             <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                             <input class="form-control" type="date" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
                         </ng-container>
+                        <ng-container *ngIf="component.type == 'TIME'">
+                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
+                            <input class="form-control" type="time" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
+                        </ng-container>
+                        <ng-container *ngIf="component.type == 'DATE_TIME'">
+                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
+                            <input class="form-control" type="datetime-local" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
+                        </ng-container>
+                        <ng-container *ngIf="component.type == 'YES_NO'">
+                            <input type="checkbox" type="checkbox" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
+                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
+                        </ng-container>
                     </div>
                 </div>
           
