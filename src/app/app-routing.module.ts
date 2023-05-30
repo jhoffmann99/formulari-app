@@ -31,7 +31,7 @@ const routes: Routes = [
     pathMatch: 'full',
     component: ForgotPasswordSuccessComponent,
   },
-  {path: 'dashboard', component: OverviewComponent},
+  {path: 'dashboard', component: OverviewComponent, canActivate: [AuthGuard] },
   { path: 'template/add', component: AddTemplateComponent, canActivate: [AuthGuard] },
   { path: 'check/add', component: AddCheckComponent, canActivate: [AuthGuard] },
   { path: 'check/reply/:checkId', component: ReplyCheckComponent },

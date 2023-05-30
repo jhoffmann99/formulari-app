@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(this.form.value).subscribe(
       (resp) => {
         this.authService.setAuthenticated(true);
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('dashboard');
       },
       (error) => {
         this.notificationService.error(

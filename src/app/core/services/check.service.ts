@@ -10,6 +10,9 @@ import { CheckReply } from './check-replies';
   providedIn: 'root',
 })
 export class CheckService {
+  sendReminder(uid: string) {
+    return this.http.post<any>(this.apiUrl + '/remind/' + uid, {}, {withCredentials: true});
+  }
   private apiUrl = 'http://localhost:3000/check';
 
   constructor(private http: HttpClient) {}

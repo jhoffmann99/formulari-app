@@ -20,6 +20,7 @@ export class NavigationComponent implements OnInit {
   logout() {
     this.authService.signOut().subscribe((resp) => {
       this.authService.setAuthenticated(false);
+      this.router.navigateByUrl('home');
 }, error => {
   console.log(error);
 })

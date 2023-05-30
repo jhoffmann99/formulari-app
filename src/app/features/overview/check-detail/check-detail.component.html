@@ -1,5 +1,9 @@
 <ng-container *ngIf="check; else noData">
     <h2>{{check.check.name}} ({{check.check.template.name}})</h2>
+    <ng-container *ngIf="!check.data">
+        <a class="btn btn-outline-secondary"
+        (click)="sendReminder()">Erinnerung versenden</a>
+    </ng-container>
     <h3>Empfänger</h3>
     <table class="table table-striped">
         <thead>

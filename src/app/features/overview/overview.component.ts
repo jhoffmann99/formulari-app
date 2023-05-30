@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckService } from '../../core/services/check.service';
 import { CheckReply } from '../../core/services/check-replies';
+import { NotificationService } from '../../core/services/notification.service';
 
 @Component({
   selector: 'app-overview',
@@ -13,10 +14,13 @@ export class OverviewComponent implements OnInit {
 
   checkReply: CheckReply = null;
 
-  constructor(private checkService: CheckService) { }
+  constructor(private checkService: CheckService, private notificationService: NotificationService) { }
   
   ngOnInit(): void {
-    this.checkService.getInbox().subscribe(response => this.checkReplies = response);
+    this.checkService.getInbox().subscribe(response => {
+      this.checkReplies = response;
+      this.checkReply = null;
+    });
   }
 
   loadChecks(selectedButton: string) {
@@ -28,6 +32,7 @@ export class OverviewComponent implements OnInit {
         this.loadOutbox();
         break;
     }
+    this.checkReply = null;
   }
 
   loadInbox() {
@@ -44,6 +49,12 @@ export class OverviewComponent implements OnInit {
 
   showDetails(uid: string) {
     this.checkReply = this.checkReplies.find(reply => reply.uid === uid);
+  }
+
+  sendReminderMail(uid: string) {
+    this.checkService.sendReminder(uid).subscribe(result => {
+      this.notificationService.success('Eine Erinnerungsmail wurde versendet.');
+    });
   }
 }
 
