@@ -25,6 +25,8 @@ export class AddCheckComponent implements OnInit {
   templates: Template[] = [];
   recipients: CheckRecipientDto[] = [];
   checkName: string = '';
+  subject: string = '';
+  greeting: string = 'bitte machen Sie die folgenden Angaben und klicken Sie abschließend auf "Formular Absenden".';
   templateUid: string = '';
   transmissionType: string = 'E_MAIL';
 
@@ -45,6 +47,8 @@ export class AddCheckComponent implements OnInit {
   addCheck() {
     const dto: CreateCheckRequestDto = {
       name: this.checkName,
+      subject: this.subject,
+      greeting: this.greeting,
       templateUid: this.templateUid,
       transmissionType: this.transmissionType,
       recipients: this.recipients,

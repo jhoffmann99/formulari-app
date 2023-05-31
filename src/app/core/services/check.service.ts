@@ -5,11 +5,13 @@ import { CreateCheckRequestDto } from './createCheckRequstDto';
 import { ReplyCheckRequestDto } from './ReplyCheckRequestDto';
 import { Observable } from 'rxjs';
 import { CheckReply } from './check-replies';
+import { CheckDetails } from './CheckDetails';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CheckService {
+
   sendReminder(uid: string) {
     return this.http.post<any>(this.apiUrl + '/remind/' + uid, {}, {withCredentials: true});
   }
@@ -39,5 +41,9 @@ export class CheckService {
 
   getArchived() {
     return this.http.get<CheckReply[]>(this.apiUrl + "/archive", {withCredentials: true});
+  }
+
+  getCheckDetails(checkId: string): any {
+    return this.http.get<CheckDetails>(this.apiUrl + "/details/" + checkId, {withCredentials: false})
   }
 }

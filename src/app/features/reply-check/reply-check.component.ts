@@ -6,6 +6,7 @@ import { of, switchMap } from 'rxjs';
 import { TemplateComponent } from '../../core/services/templateRequestDto';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { NotificationService } from '../../core/services/notification.service';
+import { CheckDetails } from '../../core/services/CheckDetails';
 
 @Component({
   selector: 'app-reply-check',
@@ -15,6 +16,7 @@ import { NotificationService } from '../../core/services/notification.service';
 export class ReplyCheckComponent implements OnInit {
   templateComponents: TemplateComponent[] = [];
   templateName: string = 'Formular';
+  checkDetails: CheckDetails;
   uid: string = '';
 
   form: FormGroup = this.fb.group({
@@ -35,8 +37,13 @@ export class ReplyCheckComponent implements OnInit {
       .pipe(
         switchMap((params: ParamMap) => of(params.get('checkId'))),
         switchMap((checkId: string) => {
-          this.uid = checkId;
-          return  this.checkService.getTemplateForCheckUid(checkId);
+          return this.checkService.getCheckDetails(checkId);
+
+        }),
+        switchMap((checkDetails: CheckDetails) => {
+          this.uid = checkDetails.checkId;
+          this.checkDetails = checkDetails;
+          return  this.checkService.getTemplateForCheckUid(checkDetails.checkId);
         }
         )
       )
@@ -85,7 +92,17 @@ export class ReplyCheckComponent implements OnInit {
     });
   }
 
-  valueChanged(value, index) {    
+  valueChanged(value, index) {  
+    console.log(value)
     this.data.at(index).get('value').setValue(value);
+  }
+
+  validateMultiSelect(value, index, component: TemplateComponent) {
+    console.log(value)
+    if (value.length < component.minOptions && value.length > component.maxOptions) {
+      this.notificationService.error('Es wurden zu wenige oder zu viele Optionen ausgewählt')
+    }
+
+    this.valueChanged(value, index);
   }
 }

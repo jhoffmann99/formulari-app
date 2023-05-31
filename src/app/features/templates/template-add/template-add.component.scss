@@ -21,6 +21,11 @@
     background-color: #000;
   }
 
+  .component:disabled {
+    background-color: lightblue;
+    cursor: not-allowed;
+  }
+
   .pflichtfeld {
       display: flex;
       align-items: flex-end;

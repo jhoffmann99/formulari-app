@@ -1,5 +1,6 @@
 <div class="container my-5">
-    <h2>{{templateName}}</h2>
+    <h2>{{checkDetails?.subject}}</h2>
+    <p>{{checkDetails?.greeting }}</p>
     <form #form="ngForm" class="g-3 my-3">
         <ng-container *ngFor="let component of templateComponents; index as i">
             <fieldset>
@@ -34,6 +35,13 @@
                             <select class="form-select" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
                                 <option selected>Bitte auswählen</option>
                                 <option *ngFor="let option of component.options | options">{{option}}</option>
+                              </select>
+                        </ng-container>
+                        <ng-container *ngIf="component.type == 'MULTIPLE_CHOICE'">
+                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
+                            <select class="form-select" [id]="component.name" multiple [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
+                                <option selected>Bitte auswählen</option>
+                                <option *ngFor="let option of component.options | options" [value]="option">{{option}}</option>
                               </select>
                         </ng-container>
                     </div>

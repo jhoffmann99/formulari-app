@@ -1,13 +1,23 @@
-<div class="container my-5">
+<div class="container my-5 pb-3">
     <h2>Neuen Check erstellen</h2>
-
-    <h3>Vorlage & Versand</h3>
-    <p>Bitte wählen Sie hier eine der Vorlagen aus und legen die Versandart fest.</p>
+    <h3>Allgemein</h3>
     <form class="row g-3 my-3">
         <div class="col-12">
             <label for="checkName" class="form-label">Check-Name</label>
-            <input name="name" type="text" class="form-control" id="name" [(ngModel)]="checkName">
+            <input name="checkName" type="text" class="form-control" id="checkName" [(ngModel)]="checkName">
         </div>
+        <div class="col-12">
+            <label for="betreff" class="form-label">Betreff</label>
+            <textarea name="betreff" type="text" class="form-control" id="name" [(ngModel)]="subject"></textarea>
+        </div>
+        <div class="col-12">
+            <label for="greeting" class="form-label">Begrüßungstext</label>
+            <textarea name="greeting" class="form-control" id="name" [(ngModel)]="greeting"></textarea>
+        </div>
+    </form>
+    <h3>Vorlage & Versand</h3>
+    <p>Bitte wählen Sie hier eine der Vorlagen aus und legen die Versandart fest.</p>
+    <form class="row g-3 my-3">
         <div class="col-md-6">
             <label for="templateName" class="form-label">Vorlage</label>
             <select [(ngModel)]="templateUid" [ngModelOptions]="{standalone: true}" class="form-select"

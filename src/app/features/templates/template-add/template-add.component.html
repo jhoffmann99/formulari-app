@@ -94,9 +94,9 @@
         <button class="component" (click)="addComponent('DATE_TIME')">Datum u. Uhrzeit</button>
         <button class="component" (click)="addComponent('SINGLE_CHOICE')">Single-Choice</button>
         <button class="component" (click)="addComponent('MULTIPLE_CHOICE')">Multiple-Choice</button>
-        <button class="component">Bild</button>
-        <button class="component">Datei</button>
-        <button class="component">Bewertung</button>
+        <button class="component" disabled>Bild</button>
+        <button class="component" disabled>Datei</button>
+        <button class="component" disabled>Bewertung</button>
     </div>
     <ng-container *ngIf="components.length == 0">
         <div class="bd-callout bd-callout-info">

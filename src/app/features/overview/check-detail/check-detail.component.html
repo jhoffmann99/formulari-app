@@ -59,7 +59,63 @@
         </table>
     </ng-container>
     <ng-container *ngIf="check.check.status === 'ARCHIVED'">
-        <h1>Archiviert</h1>
+        <h2>{{check.check.name}} ({{check.check.template.name}})</h2>
+        <ng-container *ngIf="!check.data">
+            <a class="btn btn-outline-secondary" (click)="sendReminder()">Erinnerung versenden</a>
+        </ng-container>
+        <h3>Empfänger</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Anrede</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile Rufnummer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{check.salutation === 'MR' ? 'Herr': 'Frau'}}</td>
+                    <td>{{check.firstName + ' ' + check.lastName}}</td>
+                    <td>{{check.email}}</td>
+                    <td>{{check.mobilePhone}}</td>
+                </tr>
+        </table>
+        <ng-container *ngIf="check.data">
+            <h3>Daten</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Attribut</th>
+                        <th scope="col">Wert</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let field of check.data">
+                        <tr>
+                            <td>{{field.name}}</td>
+                            <td>{{field.value}}</td>
+                        </tr>
+                    </ng-container>
+            </table>
+        </ng-container>
+        <h3>Weitere Informationen</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Erstellt</th>
+                    <th scope="col">Beantwortet</th>
+                    <th scope="col">Versandtyp</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>{{check.createdAt | date : 'dd.MM.yyyy HH:mm'}} {{check.createdAt ? 'Uhr': ''}}</td>
+                    <td>{{check.answerAt | date : 'dd.MM.yyyy HH:mm'}} {{check.answerAt ? 'Uhr': ''}}</td>
+                    <td>{{check.check.transmissionType === 'E_MAIL' ? 'E-Mail': 'SMS'}}</td>
+                </tr>
+        </table>
     </ng-container>
 </ng-container>
 <ng-template #noData>

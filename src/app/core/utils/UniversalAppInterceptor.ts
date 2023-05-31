@@ -38,7 +38,6 @@ export class UniversalAppInterceptor implements HttpInterceptor {
           this.cookieService.delete('formulari');
         this.router.navigateByUrl('/home');
       } else {
-        console.log("is authenticated!")
         this.authService.setAuthenticated(true);
       }
     }
