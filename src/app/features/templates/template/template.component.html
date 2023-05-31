@@ -1,0 +1,5 @@
+<div class="container my-5">
+    <h2>Vorlagen</h2>
+    <app-template-list [templates]="templates" (delete)="deleteTemplate($event)"></app-template-list>
+    <button class="btn btn-primary" (click)="createTemplate()">Neue Vorlage</button>
+</div>

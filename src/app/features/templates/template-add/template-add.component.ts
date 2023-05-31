@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { createTemplateRequestDto } from '../../core/services/templateRequestDto';
-import { NotificationService } from '../../core/services/notification.service';
-import { TemplateService } from '../../core/services/template.service';
+import { createTemplateRequestDto } from '../../../core/services/templateRequestDto';
+import { NotificationService } from '../../../core/services/notification.service';
+import { TemplateService } from '../../../core/services/template.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-template',
-  templateUrl: './add-template.component.html',
-  styleUrls: ['./add-template.component.scss'],
+  templateUrl: './template-add.component.html',
+  styleUrls: ['./template-add.component.scss'],
 })
 export class AddTemplateComponent {
   form: FormGroup = this.fb.group({
@@ -18,7 +19,8 @@ export class AddTemplateComponent {
   constructor(
     private templateService: TemplateService,
     private fb: FormBuilder,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   get components(): FormArray {
@@ -39,8 +41,8 @@ export class AddTemplateComponent {
       case 'TIME':
         this.addTimeField();
         break;
-        case 'DATE_TIME':
-          this.addDateTimeField();
+      case 'DATE_TIME':
+        this.addDateTimeField();
         break;
       case 'YES_NO':
         this.addYesNoField();
@@ -130,6 +132,7 @@ export class AddTemplateComponent {
       (data) => {
         this.form.reset();
         this.notificationService.success('Die Vorlage wurde erstellt');
+        this.router.navigateByUrl('template');
       },
       (error) => {
         this.notificationService.error('Es ist ein Fehler aufgetreten');

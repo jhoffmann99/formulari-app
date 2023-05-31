@@ -25,5 +25,7 @@ export interface Check {
 }
 
 export interface Template {
-    name: string
+    name: string,
+    createdAt: string,
+    uid: string
 }

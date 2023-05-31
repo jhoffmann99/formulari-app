@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { AddCheckComponent } from './add-check/add-check.component';
-import { AddTemplateComponent } from './add-template/add-template.component';
+import { AddTemplateComponent } from './templates/template-add/template-add.component';
 import { ForgotPasswordSuccessComponent } from './forgot-password-success/forgot-password-success.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { HomeComponent } from './home/home.component';
@@ -18,7 +18,8 @@ import { OverviewComponent } from './overview/overview.component';
 import { MenuComponent } from './overview/menu/menu.component';
 import { ChecksComponent } from './overview/checks/checks.component';
 import { CheckDetailComponent } from './overview/check-detail/check-detail.component';
-
+import { TemplateListComponent } from './templates/template-list/template-list.component';
+import { TemplateComponent } from './templates/template/template.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +38,16 @@ import { CheckDetailComponent } from './overview/check-detail/check-detail.compo
     MenuComponent,
     ChecksComponent,
     CheckDetailComponent,
+    TemplateListComponent,
+    TemplateComponent,
   ],
-  imports: [CommonModule, CoreModule, RouterModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    CommonModule,
+    CoreModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   exports: [],
 })
 export class FeaturesModule {}

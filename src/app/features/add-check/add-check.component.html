@@ -10,10 +10,10 @@
         </div>
         <div class="col-md-6">
             <label for="templateName" class="form-label">Vorlage</label>
-            <select [(ngModel)]="templateName" [ngModelOptions]="{standalone: true}" class="form-select"
+            <select [(ngModel)]="templateUid" [ngModelOptions]="{standalone: true}" class="form-select"
                 id="templateName">
                 <option selected>Bitte auswählen</option>
-                <option *ngFor="let template of templates" [ngValue]="template">{{template}}</option>
+                <option *ngFor="let template of templates" [ngValue]="template.uid">{{template.name}}</option>
             </select>
         </div>
         <div class="col-md-6">
@@ -86,5 +86,5 @@
         </tbody>
     </table>
 
-    <button type="button" class="btn btn-primary w-100" (click)="addCheck()">Check erstellen</button>
+    <button type="button" class="btn btn-primary w-100" (click)="addCheck()" [disabled]="!isValid()">Check erstellen</button>
 </div>

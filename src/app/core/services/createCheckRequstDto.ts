@@ -1,6 +1,6 @@
 export interface CreateCheckRequestDto {
     name: string,
-    templateName: string,
+    templateUid: string,
     transmissionType: string,
     recipients: CheckRecipientDto[]
 }

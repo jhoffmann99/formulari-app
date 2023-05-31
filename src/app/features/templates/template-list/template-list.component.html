@@ -1,0 +1,18 @@
+<table class="table table-striped" *ngIf="templates.length > 0; else noData">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Erstellt am</th>
+            <th scope="col">Aktion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let template of templates">
+            <td>{{template.name}}</td>
+            <td>{{template.createdAt | date : 'dd.MM.yyyy hh:mm'}} Uhr</td>
+            <td><button class="btn btn-danger" (click)="deleteTemplate(template.uid)">Löschen</button></td>
+        </tr>
+</table>
+<ng-template #noData>
+    <p>Es wurden noch keine Vorlagen erstellt</p>
+</ng-template>

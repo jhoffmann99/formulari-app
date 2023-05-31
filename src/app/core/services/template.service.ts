@@ -6,6 +6,7 @@ import { createTemplateRequestDto } from './templateRequestDto';
   providedIn: 'root',
 })
 export class TemplateService {
+
   private apiUrl = 'http://localhost:3000/template';
 
   constructor(private http: HttpClient) {}
@@ -16,5 +17,9 @@ export class TemplateService {
 
   findAll() {
     return this.http.get<any>(this.apiUrl, {withCredentials: true});
+  }
+
+  delete(uid: string) {
+    return this.http.delete<any>(this.apiUrl + '/' + uid, {withCredentials: true});
   }
 }

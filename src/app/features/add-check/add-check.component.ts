@@ -13,6 +13,8 @@ import { TemplateService } from '../../core/services/template.service';
 import { CheckService } from '../../core/services/check.service';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../../core/services/notification.service';
+import { Template } from '../../core/services/check-replies';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-check',
@@ -20,17 +22,18 @@ import { NotificationService } from '../../core/services/notification.service';
   styleUrls: ['./add-check.component.scss'],
 })
 export class AddCheckComponent implements OnInit {
-  templates: string[] = [];
+  templates: Template[] = [];
   recipients: CheckRecipientDto[] = [];
   checkName: string = '';
-  templateName: string = '';
+  templateUid: string = '';
   transmissionType: string = 'E_MAIL';
 
   constructor(
     private checkService: CheckService,
     private templateService: TemplateService,
     private fb: FormBuilder,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +45,7 @@ export class AddCheckComponent implements OnInit {
   addCheck() {
     const dto: CreateCheckRequestDto = {
       name: this.checkName,
-      templateName: this.templateName,
+      templateUid: this.templateUid,
       transmissionType: this.transmissionType,
       recipients: this.recipients,
     };
@@ -50,6 +53,7 @@ export class AddCheckComponent implements OnInit {
     this.checkService.createCheck(dto).subscribe(
       (data) => {
         this.notificationService.success('Der Check wurde erstellt');
+        this.router.navigateByUrl('dashboard');
       },
       (error) => {
         this.notificationService.error('Es ist ein Fehler aufgetreten');
@@ -60,5 +64,14 @@ export class AddCheckComponent implements OnInit {
   addRecipient(form: NgForm) {
     this.recipients.push(form.value);
     form.resetForm();
+  }
+
+  isValid() {
+    return (
+      this.recipients.length > 0 &&
+      this.templateUid &&
+      this.templateUid != 'Bitte auswählen' &&
+      this.checkName
+    );
   }
 }

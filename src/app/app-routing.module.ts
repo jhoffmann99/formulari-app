@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCheckComponent } from './features/add-check/add-check.component';
-import { AddTemplateComponent } from './features/add-template/add-template.component';
+import { AddTemplateComponent } from './features/templates/template-add/template-add.component';
 import { ForgotPasswordSuccessComponent } from './features/forgot-password-success/forgot-password-success.component';
 import { ForgotPasswordComponent } from './features/forgot-password/forgot-password.component';
 import { HomeComponent } from './features/home/home.component';
@@ -13,7 +13,7 @@ import { ResetPasswordComponent } from './features/reset-password/reset-password
 import { AuthGuard } from './core/guards/auth.guard';
 import { CheckSubmittedComponent } from './features/check-submitted/check-submitted.component';
 import { OverviewComponent } from './features/overview/overview.component';
-
+import { TemplateComponent } from './features/templates/template/template.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -31,8 +31,13 @@ const routes: Routes = [
     pathMatch: 'full',
     component: ForgotPasswordSuccessComponent,
   },
-  {path: 'dashboard', component: OverviewComponent, canActivate: [AuthGuard] },
-  { path: 'template/add', component: AddTemplateComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: OverviewComponent, canActivate: [AuthGuard] },
+  {path: 'template', component: TemplateComponent, canActivate: [AuthGuard]},
+  {
+    path: 'template/add',
+    component: AddTemplateComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'check/add', component: AddCheckComponent, canActivate: [AuthGuard] },
   { path: 'check/reply/:checkId', component: ReplyCheckComponent },
   { path: 'check/submitted', component: CheckSubmittedComponent },
