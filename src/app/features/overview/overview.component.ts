@@ -24,12 +24,16 @@ export class OverviewComponent implements OnInit {
   }
 
   loadChecks(selectedButton: string) {
+    this.checkReplies = null;
     switch (selectedButton) {
       case 'menu-btn-eingang':
         this.loadInbox();
         break;
       case 'menu-btn-ausgang':
         this.loadOutbox();
+        break;
+      case 'menu-btn-archiv':
+        this.loadArchived();
         break;
     }
     this.checkReply = null;
@@ -43,6 +47,12 @@ export class OverviewComponent implements OnInit {
 
   loadOutbox() {
     this.checkService.getOutbox().subscribe(response => {
+      this.checkReplies = response;
+    })
+  }
+
+  loadArchived() {
+    this.checkService.getArchived().subscribe(response => {
       this.checkReplies = response;
     })
   }

@@ -1,4 +1,4 @@
-<ng-container *ngIf="checks.length > 0; else noData">
+<ng-container *ngIf="checks && checks.length > 0; else noData">
     <ul class="list-group list-group-flush">
         <button [id]="check.uid" class="list-group-item list-group-item-action" [class.active]="check.uid == activeButton" *ngFor="let check of checks"  (click)="select(check.uid)">
             <div>

@@ -18,11 +18,22 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
-    this.authService.signOut().subscribe((resp) => {
-      this.authService.setAuthenticated(false);
+    this.authService.signOut().subscribe(
+      (resp) => {
+        this.authService.setAuthenticated(false);
+        this.router.navigateByUrl('home');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  navigateToStart() {
+    if (this.authService.isAuthenticated) {
+      this.router.navigateByUrl('dashboard');
+    } else {
       this.router.navigateByUrl('home');
-}, error => {
-  console.log(error);
-})
+    }
   }
 }

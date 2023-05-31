@@ -22,7 +22,7 @@ export class CheckService {
   }
 
   replyCheck(dto: ReplyCheckRequestDto) {
-    return this.http.post<any>(this.apiUrl + '/reply', dto);
+    return this.http.post<any>(this.apiUrl + '/reply', dto, {withCredentials: false});
   }
 
   getTemplateForCheckUid(checkUid: string):Observable<createTemplateRequestDto> {
@@ -30,10 +30,14 @@ export class CheckService {
   }
 
   getInbox() {
-    return this.http.get<CheckReply[]>(this.apiUrl + "/inbox");
+    return this.http.get<CheckReply[]>(this.apiUrl + "/inbox", {withCredentials: true});
   }
 
   getOutbox() {
-    return this.http.get<CheckReply[]>(this.apiUrl + "/outbox");
+    return this.http.get<CheckReply[]>(this.apiUrl + "/outbox", {withCredentials: true});
+  }
+
+  getArchived() {
+    return this.http.get<CheckReply[]>(this.apiUrl + "/archive", {withCredentials: true});
   }
 }
