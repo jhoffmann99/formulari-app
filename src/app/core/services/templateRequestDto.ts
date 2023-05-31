@@ -1,5 +1,5 @@
 export interface createTemplateRequestDto {
-    templateName: string,
+    name: string,
     components: TemplateComponent[]
 }
 
@@ -15,4 +15,5 @@ export interface TemplateComponent {
     length?: number;
     fieldType: string;
     value?: any;
+    options?: string
 }

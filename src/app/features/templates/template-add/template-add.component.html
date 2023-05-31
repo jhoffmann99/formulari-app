@@ -9,11 +9,11 @@
             </div>
         </div>
         <ng-container formArrayName="components" *ngFor="let component of components.controls; index as i">
-            <fieldset>
+            <fieldset class="component-row">
                 <legend>{{component.get('type').value | fieldType }}</legend>
                 <div class="row">
                     <div class="col-lg-2" [formGroupName]="i">
-                        <label for="templateName" class="form-label">Feldname</label>
+                        <label for="name" class="form-label">Feldname</label>
                         <input class="form-control" type="text" id="name" name="name" formControlName="name">
                     </div>
                     <div class="col-lg-4" [formGroupName]="i">
@@ -58,6 +58,26 @@
                             <input class="form-control" type="number" id="max" name="max" formControlName="max">
                         </div>
                     </ng-container>
+                    <ng-container *ngIf="component.get('type').value === 'SINGLE_CHOICE'">
+                        <div class="col-12" [formGroupName]="i">
+                            <label for="options" class="form-label">Optionen (getrennt durch Semikolon ";")</label>
+                            <input class="form-control" type="text" id="options" name="options" formControlName="options">
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="component.get('type').value === 'MULTIPLE_CHOICE'">
+                        <div class="col-12" [formGroupName]="i">
+                            <label for="options" class="form-label">Optionen (getrennt durch Semikolon ";")</label>
+                            <input class="form-control" type="text" id="options" name="options" formControlName="options">
+                        </div>
+                        <div class="col-lg-3" [formGroupName]="i">
+                            <label for="minOptionen" class="form-label">Minimum Auswahl an Optionen</label>
+                            <input class="form-control" type="number" id="minOptionen" name="leminOptionenngth" formControlName="minOptionen" min="0">
+                        </div>
+                        <div class="col-lg-3" [formGroupName]="i">
+                            <label for="maxOptionen" class="form-label">Maximum Auswahl an Optionen</label>
+                            <input class="form-control" type="number" id="maxOptionen" name="maxOptionen" formControlName="maxOptionen" min="0">
+                        </div>
+                    </ng-container>
                 </div>
           
         </fieldset>
@@ -72,8 +92,8 @@
         <button class="component" (click)="addComponent('DATE')">Datum</button>
         <button class="component" (click)="addComponent('TIME')">Uhrzeit</button>
         <button class="component" (click)="addComponent('DATE_TIME')">Datum u. Uhrzeit</button>
-        <button class="component">Single-Choice</button>
-        <button class="component">Multiple-Choice</button>
+        <button class="component" (click)="addComponent('SINGLE_CHOICE')">Single-Choice</button>
+        <button class="component" (click)="addComponent('MULTIPLE_CHOICE')">Multiple-Choice</button>
         <button class="component">Bild</button>
         <button class="component">Datei</button>
         <button class="component">Bewertung</button>

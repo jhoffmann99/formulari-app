@@ -29,6 +29,13 @@
                             <input type="checkbox" type="checkbox" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
                             <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                         </ng-container>
+                        <ng-container *ngIf="component.type == 'SINGLE_CHOICE'">
+                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
+                            <select class="form-select" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
+                                <option selected>Bitte auswählen</option>
+                                <option *ngFor="let option of component.options | options">{{option}}</option>
+                              </select>
+                        </ng-container>
                     </div>
                 </div>
           

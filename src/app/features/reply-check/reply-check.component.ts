@@ -42,7 +42,7 @@ export class ReplyCheckComponent implements OnInit {
       )
       .subscribe((data) => {
         this.form.get('uid').setValue(this.uid);
-        this.templateName = data.templateName;
+        this.templateName = data.name;
         this.templateComponents = data.components;
         data.components.forEach(component => {
           this.addComponent(component);

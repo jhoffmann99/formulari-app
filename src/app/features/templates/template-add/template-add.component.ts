@@ -47,7 +47,39 @@ export class AddTemplateComponent {
       case 'YES_NO':
         this.addYesNoField();
         break;
+        case 'SINGLE_CHOICE':
+          this.addSingleChoiceField();
+          break;
+          case 'MULTIPLE_CHOICE':
+          this.addMultipleChoiceField();
+          break;
     }
+  }
+  addMultipleChoiceField() {
+    this.components.push(
+      this.fb.group({
+        type: 'MULTIPLE_CHOICE',
+        name: null,
+        description: null,
+        hint: null,
+        required: true,
+        options: null,
+        minOptions: null,
+        maxOptions: null
+      })
+    );
+  }
+  addSingleChoiceField() {
+    this.components.push(
+      this.fb.group({
+        type: 'SINGLE_CHOICE',
+        name: null,
+        description: null,
+        hint: null,
+        required: true,
+        options: null
+      })
+    );
   }
   addYesNoField() {
     this.components.push(
@@ -104,7 +136,7 @@ export class AddTemplateComponent {
         name: null,
         description: null,
         hint: null,
-        required: false,
+        required: true,
         min: null,
         max: null,
       })
@@ -118,14 +150,14 @@ export class AddTemplateComponent {
         name: null,
         description: null,
         hint: null,
-        required: false,
+        required: true,
       })
     );
   }
 
   addTemplate() {
     const dto: createTemplateRequestDto = {
-      templateName: this.form.get('templateName').value,
+      name: this.form.get('templateName').value,
       components: this.components.getRawValue(),
     };
     this.templateService.createTemplate(dto).subscribe(

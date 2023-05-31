@@ -7,16 +7,18 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterModule } from '@angular/router';
 import { UniversalAppInterceptor } from './utils/UniversalAppInterceptor';
+import { OptionsPipe } from './pipes/options.pipe';
 
 @NgModule({
   declarations: [
     FieldTypePipe,
     NotificationComponent,
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    OptionsPipe
   ],
   imports: [CommonModule, HttpClientModule, RouterModule],
-  exports: [NavigationComponent, FooterComponent, FieldTypePipe, NotificationComponent],
+  exports: [NavigationComponent, FooterComponent, FieldTypePipe, OptionsPipe, NotificationComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
