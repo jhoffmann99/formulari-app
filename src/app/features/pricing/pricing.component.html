@@ -1,0 +1,152 @@
+<main>
+    <section class="section-4">
+        <div class="section-4-1">
+            <div class="section-main">
+                <h1>Flexible Abonnements für Jeden</h1>
+                <p>formulari ist für Jedermann! Egal ob du gerade erst startest oder dein Unternehmen bereits etabliert ist, wir haben ein passendes Paket für dich. Sollten die unten aufgeführten Pakete dennoch nicht ausreichen, kontaktiere uns und wir erstellen dir ein individuelles Angebot.</p>
+            </div>
+        </div>
+        <div class="section-4-2">
+            <div class="section-main">
+                <div class="pricing-body">
+                    <div class="pricing-body-header">
+                        <div class="pricing-checkbox">
+                            <span for="pricing__monthly">Monatlich</span>
+                            <div id="custom-checkbox" (click)="plans()" [class.anually]="!monthly">
+                                <div class="annual"></div>
+                            </div>
+                            <span for="pricing__anually">Jährlich (Spare bis zu 20%)</span>
+                        </div>
+                    </div>
+                    <div class="pricing-body-plans">
+    
+                        <div [class.active]="monthly" id="pricing__monthly__plan">
+                            <div>
+                                <div class="card">
+                                    <div class="card-header custom-card-header">
+                                        <h2>Kostenlos</h2>
+                                        <h2 class="card-price">0<span>€/Monat</span></h2>
+                                        <p>Entdecken Sie formulari</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Bis zu 10 Checks pro Monat (E-Mail Versand)</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Basis Komponenten</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Bis zu 10 Verlagen</p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">Dieses Paket auswählen</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header custom-card-header">
+                                        <h2>Starter</h2>
+                                        <h2 class="card-price">19<span>€/Monat</span></h2>
+                                        <p>Ideal für kleinere Unternehmen</p>
+                                    </div>
+                                    <div class="card-body">
+                                        Alle Funktionen des kostenlosen Pakets und zusätzlich:
+                                        <ul>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt="">Bis zu 100 Checks pro Monat (E-Mail Versand)<p></p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Keine Begrenzung bei Vorlagen</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Zusätzliche Abfragekomponenten: Datei, Bild, Bewertung</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>E-Mail Benachrichtigung bei übermittelten Checks</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>E-Mail Support</p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">Dieses Paket auswählen</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header custom-card-header">
+                                        <h2>Premium</h2>
+                                        <h2 class="card-price">49<span>€/Monat</span></h2>
+                                        <p>Wenn es etwas mehr sein darf</p>
+                                    </div>
+                                    <div class="card-body">
+                                        Alle Funktionen des kostenlosen Pakets und zusätzlich:
+                                        <ul>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Bis zu 1000 Checks pro Monat (E-Mail Versand)</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Bis zu 50 Checks pro Monat (SMS Versand)</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Export von übermittelten Daten</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Statistiken</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Telefon-Support</p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">Dieses Paket auswählen</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div [class.active]="!monthly" id="pricing__annually__plan">
+                            <div>
+                                <div class="card">
+                                    <div class="card-header custom-card-header">
+                                        <h2>Kostenlos</h2>
+                                        <h2 class="card-price">0<span>€/Jahr</span></h2>
+                                        <p>Entdecken Sie formulari</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Bis zu 10 Checks pro Monat (E-Mail Versand)</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Basis Komponenten</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Bis zu 10 Verlagen</p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">Dieses Paket auswählen</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header custom-card-header">
+                                        <h2>Starter</h2>
+                                        <h2 class="card-price">180<span>€/Jahr</span></h2>
+                                        <p>Ideal für kleinere Unternehmen</p>
+                                    </div>
+                                    <div class="card-body">
+                                        Alle Funktionen des kostenlosen Pakets und zusätzlich:
+                                        <ul>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt="">Bis zu 100 Checks pro Monat (E-Mail Versand)<p></p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Keine Begrenzung bei Vorlagen</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Zusätzliche Abfragekomponenten: Datei, Bild, Bewertung</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>E-Mail Benachrichtigung bei übermittelten Checks</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>E-Mail Support</p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">Dieses Paket auswählen</a>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header custom-card-header">
+                                        <h2>Premium</h2>
+                                        <h2 class="card-price">470<span>€/Jahr</span></h2>
+                                        <p>Wenn es etwas mehr sein darf</p>
+                                    </div>
+                                    <div class="card-body">
+                                        Alle Funktionen des kostenlosen Pakets und zusätzlich:
+                                        <ul>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Bis zu 1000 Checks pro Monat (E-Mail Versand)</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Bis zu 50 Checks pro Monat (SMS Versand)</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Export von übermittelten Daten</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Statistiken</p></li>
+                                            <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt=""><p>Telefon-Support</p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#">Dieses Paket auswählen</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</main>

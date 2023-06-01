@@ -20,6 +20,7 @@ import { ChecksComponent } from './overview/checks/checks.component';
 import { CheckDetailComponent } from './overview/check-detail/check-detail.component';
 import { TemplateListComponent } from './templates/template-list/template-list.component';
 import { TemplateComponent } from './templates/template/template.component';
+import { PricingComponent } from './pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { TemplateComponent } from './templates/template/template.component';
     CheckDetailComponent,
     TemplateListComponent,
     TemplateComponent,
+    PricingComponent,
   ],
   imports: [
     CommonModule,

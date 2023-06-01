@@ -14,6 +14,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { CheckSubmittedComponent } from './features/check-submitted/check-submitted.component';
 import { OverviewComponent } from './features/overview/overview.component';
 import { TemplateComponent } from './features/templates/template/template.component';
+import { PricingComponent } from './features/pricing/pricing.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
     component: AddTemplateComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'subscription/plans', component: PricingComponent },
   { path: 'check/add', component: AddCheckComponent, canActivate: [AuthGuard] },
   { path: 'check/reply/:checkId', component: ReplyCheckComponent },
   { path: 'check/submitted', component: CheckSubmittedComponent },
