@@ -1,4 +1,16 @@
 :host {
     display: block;
-    height: calc(100vh - 350px);
+}
+
+.component-description {
+    font-size: 1.25rem;
+    color: #222870;
+}
+
+.component-hint {
+    font-size: .875rem;
+}
+
+section {
+    background: #fff;
 }

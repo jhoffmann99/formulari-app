@@ -171,4 +171,8 @@ export class AddTemplateComponent {
       }
     );
   }
+
+  deleteComponent(index: number) {
+    console.log(this.components.get[index]);
+  }
 }

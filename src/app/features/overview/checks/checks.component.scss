@@ -1,22 +1,29 @@
 :host {
-    margin-top: .5rem;
-    background: #fff;
+  margin-top: 0.5rem;
+  background: #fff;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .grid {
-    display: grid;
-    place-items: center;
-    margin: 50px;
+  display: grid;
+  place-items: center;
+  margin: 50px;
 }
 
 .check-title {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .check-recipient {
-    font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .text-right {
-    float:right
+  float: right;
+}
+
+.custom-list-group.list-group .list-group-item.active {
+  background-color: #3878be;
+  border-color: #3878be;
 }

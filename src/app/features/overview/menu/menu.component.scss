@@ -1,4 +1,9 @@
 .menu-title {
-    padding: 1rem;
-    font-weight: bold;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.custom-list-group.list-group .list-group-item.active {
+  background-color: #3878be;
+  border-color: #3878be;
 }

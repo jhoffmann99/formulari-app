@@ -11,13 +11,13 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                 <ng-container *ngIf="this.loggedIn$ | async">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/dashboard">Überblick</a>
+                        <a class="nav-link" (click)="navigate('dashboard')" [class.active]="activeTab === 'dashboard'"><i class="bi bi-inbox fs-2"></i> Überblick</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-link-ltr" aria-current="page" routerLink="/template">Vorlagen</a>
+                        <a class="nav-link nav-link-ltr" [class.active]="activeTab === 'template'" aria-current="page" (click)="navigate('template')"><i class="bi bi-file-earmark-text fs-2"></i> Vorlagen</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/check/add">Neuer Check</a>
+                        <a class="nav-link" [class.active]="activeTab === 'check/add'" (click)="navigate('check/add')" ><i class="bi bi-file-check fs-2"></i> Neuer Check</a>
                     </li>
                 </ng-container>
 

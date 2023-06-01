@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../core/services/notification.service';
 
 interface RegisterForm {
   firstName: FormControl<string>;
@@ -27,15 +28,23 @@ export class RegisterComponent implements OnInit {
     gender: new FormControl(null, { nonNullable: true }),
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit(): void {}
 
   register() {
-    this.authService.signUp(this.form.value).subscribe(result => {
-      this.router.navigateByUrl('home');
-    }, error => {
-      console.log(error);
-    })
+    this.authService.signUp(this.form.value).subscribe({
+      next: () => {
+        this.notificationService.success(
+          'Du wurdest erfolgreich registiert und kannst dich nun anmelden'
+        );
+        this.router.navigateByUrl('home');
+      },
+      error: () => this.router.navigateByUrl('home'),
+    });
   }
 }

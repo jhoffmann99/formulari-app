@@ -1,44 +1,46 @@
-<div class="container my-5">
+<section>
+<div class="container pt-5 pb-3">
     <h2>{{checkDetails?.subject}}</h2>
     <p>{{checkDetails?.greeting }}</p>
+</div>
+</section>
+<div class="container my-5">
+
     <form #form="ngForm" class="g-3 my-3">
         <ng-container *ngFor="let component of templateComponents; index as i">
             <fieldset>
                 <div class="row">
                     <div class="col" form>
+                        <p class="component-description">{{component.description}}</p>
+                        <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                         <ng-container *ngIf="component.type == 'TEXT'">
-                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                             <input class="form-control" type="text" [id]="component.name" [maxLength]="component.length > 0 ? component.length : 255" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
                         </ng-container>
+                        <ng-container *ngIf="component.hint">
+                            <span class="component-hint">Hinweis: {{component.hint}}</span>
+                    </ng-container>
                         <ng-container *ngIf="component.type == 'NUMBER'">
-                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                             <input class="form-control" type="number" [min]="component.min" [max]="component.max" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
                         </ng-container>
                         <ng-container *ngIf="component.type == 'DATE'">
-                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                             <input class="form-control" type="date" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
                         </ng-container>
                         <ng-container *ngIf="component.type == 'TIME'">
-                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                             <input class="form-control" type="time" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
                         </ng-container>
                         <ng-container *ngIf="component.type == 'DATE_TIME'">
-                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                             <input class="form-control" type="datetime-local" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
                         </ng-container>
                         <ng-container *ngIf="component.type == 'YES_NO'">
                             <input type="checkbox" type="checkbox" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
-                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                         </ng-container>
                         <ng-container *ngIf="component.type == 'SINGLE_CHOICE'">
-                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                             <select class="form-select" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
                                 <option selected>Bitte auswählen</option>
                                 <option *ngFor="let option of component.options | options">{{option}}</option>
                               </select>
                         </ng-container>
                         <ng-container *ngIf="component.type == 'MULTIPLE_CHOICE'">
-                            <label [for]="component.name" class="form-label">{{component.name}} {{component.required ? '*' : ''}}</label>
                             <select class="form-select" [id]="component.name" multiple [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
                                 <option selected>Bitte auswählen</option>
                                 <option *ngFor="let option of component.options | options" [value]="option">{{option}}</option>
@@ -46,9 +48,8 @@
                         </ng-container>
                     </div>
                 </div>
-          
         </fieldset>
         </ng-container>
     </form>
-    <button type="submit" class="btn btn-primary w-100" (click)="replyCheck()">Formular absenden</button>
+    <button type="submit" class="btn btn-lg btn-primary w-100" (click)="replyCheck()">Formular absenden</button>
 </div>

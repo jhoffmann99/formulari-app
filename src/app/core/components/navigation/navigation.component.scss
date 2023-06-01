@@ -7,6 +7,7 @@
 .navbar .navbar-nav .nav-link {
   color: #000000;
   font-size: 1.1em;
+  cursor: pointer;
 }
 
 .btn-logo {
@@ -32,6 +33,7 @@
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:focus .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
+.navbar-custom .nav-item:hover .nav-link,
+.navbar-custom .nav-item .nav-link.active {
   color: #70fa37;
 }

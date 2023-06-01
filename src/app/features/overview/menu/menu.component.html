@@ -1,7 +1,7 @@
 
-<div class="">
+<div class="my-3">
     <span class="menu-title">Ihre Checks</span>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group custom-list-group list-group-flush">
         <button id="menu-btn-eingang" class="list-group-item list-group-item-action active" [class.active]="'menu-btn-eingang' == activeButton" (click)="select('menu-btn-eingang')">Eingang</button>
         <button id="menu-btn-ausgang" class="list-group-item list-group-item-action" [class.active]="'menu-btn-ausgang' == activeButton" (click)="select('menu-btn-ausgang')">Ausgang</button>
         <button id="menu-btn-archiv" class="list-group-item list-group-item-action" [class.active]="'menu-btn-archiv' == activeButton" (click)="select('menu-btn-archiv')">Archiv</button>

@@ -1,88 +1,97 @@
-<div class="container my-5">
-    <h2>Neue Vorlage erstellen</h2>
 
-    <form class="g-3 my-3" [formGroup]="form">
-        <div class="row">
-            <div class="col-12">
-                <label for="templateName" class="form-label">Name der Vorlage</label>
-                <input name="templateName" type="text" class="form-control" id="templateName" formControlName="templateName">
-            </div>
-        </div>
-        <ng-container formArrayName="components" *ngFor="let component of components.controls; index as i">
-            <fieldset class="component-row">
-                <legend>{{component.get('type').value | fieldType }}</legend>
-                <div class="row">
-                    <div class="col-lg-2" [formGroupName]="i">
-                        <label for="name" class="form-label">Feldname</label>
-                        <input class="form-control" type="text" id="name" name="name" formControlName="name">
+        <form class="g-3 my-4" [formGroup]="form">
+           
+                <div class="container py-3">
+                    <h2>Neue Vorlage erstellen</h2>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="templateName" class="form-label">Name der Vorlage</label>
+                            <input name="templateName" type="text" class="form-control" id="templateName" formControlName="templateName" placeholder="z.B. Kundendatenabfrage Max Mustermann">
+                        </div>
                     </div>
-                    <div class="col-lg-4" [formGroupName]="i">
-                        <label for="description" class="form-label">Beschreibung</label>
-                        <input class="form-control" type="text" id="description" name="description" formControlName="description">
-                    </div>
-                    <div class="col-lg-4" [formGroupName]="i">
-                        <label for="hint" class="form-label">Hinweis</label>
-                        <input class="form-control" type="text" id="hint" name="hint" formControlName="hint">
-                    </div>
-                    <div class="col-lg-2 pflichtfeld" [formGroupName]="i">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="required" name="required" formControlName="required">
-                            <label class="form-check-label" for="required">
-                              Pflichtfeld
-                            </label>
-                          </div>
-                    </div>
-                    <ng-container *ngIf="component.get('type').value === 'TEXT'">
-                        <div class="col-lg-2 pflichtfeld" [formGroupName]="i">
+                </div>
+      
+           <section>
+            <p class="container pt-2" *ngIf="components.controls.length > 0">Alle mit * gekennzeichneten Felder sind Pflichtfelder.</p>
+            <ng-container formArrayName="components" *ngFor="let component of components.controls; index as i">
+                <fieldset class="component-row container">
+                    <legend>{{component.get('type').value | fieldType }} <i class="btn bi bi-x" (click)="deleteComponent(i)"></i></legend>
+                    <div class="row">
+                        <div class="col-10" [formGroupName]="i">
+                            <label for="name" class="form-label">Feldname*</label>
+                            <input class="form-control" type="text" id="name" name="name" formControlName="name" placeholder="Was möchten Sie fragen?">
+                        </div>
+                        <div class="col-2 pflichtfeld" [formGroupName]="i">
                             <div class="form-check">
-                                
-                                <input class="form-check-input" type="checkbox" value="" id="multiLine" name="multiLine" formControlName="multiLine">
-                                <label class="form-check-label" for="multiLine">
-                                  mehrzeilig
+                                <input class="form-check-input" type="checkbox" id="required" name="required" formControlName="required">
+                                <label class="form-check-label" for="required">
+                                  Pflichtfeld
                                 </label>
                               </div>
                         </div>
-                        <div class="col-lg-2" [formGroupName]="i">
-                            <label for="length" class="form-label">Länge</label>
-                            <input class="form-control" type="number" id="length" name="length" formControlName="length">
+                        <div class="col-lg-6" [formGroupName]="i">
+                            <label for="description" class="form-label">Beschreibung (optional)</label>
+                            <input class="form-control" type="text" id="description" name="description" formControlName="description" placeholder="Die Beschreibung erscheint oberhalb des abzufragenden Feldes">
                         </div>
-                    </ng-container>
-                    <ng-container *ngIf="component.get('type').value === 'NUMBER'">
-                       
-                        <div class="col-lg-2" [formGroupName]="i">
-                            <label for="min" class="form-label">min</label>
-                            <input class="form-control" type="number" id="min" name="min" formControlName="min">
+                        <div class="col-lg-6" [formGroupName]="i">
+                            <label for="hint" class="form-label">Hinweis (optional)</label>
+                            <input class="form-control" type="text" id="hint" name="hint" formControlName="hint" placeholder="Der Hinweis erscheint unterhalb des Feldes">
                         </div>
-                        <div class="col-lg-2" [formGroupName]="i">
-                            <label for="max" class="form-label">max</label>
-                            <input class="form-control" type="number" id="max" name="max" formControlName="max">
-                        </div>
-                    </ng-container>
-                    <ng-container *ngIf="component.get('type').value === 'SINGLE_CHOICE'">
-                        <div class="col-12" [formGroupName]="i">
-                            <label for="options" class="form-label">Optionen (getrennt durch Semikolon ";")</label>
-                            <input class="form-control" type="text" id="options" name="options" formControlName="options">
-                        </div>
-                    </ng-container>
-                    <ng-container *ngIf="component.get('type').value === 'MULTIPLE_CHOICE'">
-                        <div class="col-12" [formGroupName]="i">
-                            <label for="options" class="form-label">Optionen (getrennt durch Semikolon ";")</label>
-                            <input class="form-control" type="text" id="options" name="options" formControlName="options">
-                        </div>
-                        <div class="col-lg-3" [formGroupName]="i">
-                            <label for="minOptions" class="form-label">Minimum Auswahl an Optionen</label>
-                            <input class="form-control" type="number" id="minOptions" name="minOptions" formControlName="minOptions" min="0">
-                        </div>
-                        <div class="col-lg-3" [formGroupName]="i">
-                            <label for="maxOptions" class="form-label">Maximum Auswahl an Optionen</label>
-                            <input class="form-control" type="number" id="maxOptions" name="maxOptions" formControlName="maxOptions" min="0">
-                        </div>
-                    </ng-container>
-                </div>
-          
-        </fieldset>
-        </ng-container>
-    </form>
+                        <ng-container *ngIf="component.get('type').value === 'TEXT'">
+                            <div class="col-lg-2" [formGroupName]="i">
+                                <label for="length" class="form-label">Länge</label>
+                                <input class="form-control" type="number" id="length" name="length" formControlName="length">
+                            </div>
+                            <div class="col-lg-2 pflichtfeld" [formGroupName]="i">
+                                <div class="form-check">
+                                    
+                                    <input class="form-check-input" type="checkbox" value="" id="multiLine" name="multiLine" formControlName="multiLine">
+                                    <label class="form-check-label" for="multiLine">
+                                      mehrzeilig
+                                    </label>
+                                  </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="component.get('type').value === 'NUMBER'">
+                           
+                            <div class="col-lg-2" [formGroupName]="i">
+                                <label for="min" class="form-label">Minimum</label>
+                                <input class="form-control" type="number" id="min" name="min" formControlName="min">
+                            </div>
+                            <div class="col-lg-2" [formGroupName]="i">
+                                <label for="max" class="form-label">Maximum</label>
+                                <input class="form-control" type="number" id="max" name="max" formControlName="max">
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="component.get('type').value === 'SINGLE_CHOICE'">
+                            <div class="col-12" [formGroupName]="i">
+                                <label for="options" class="form-label">Optionen (getrennt durch Semikolon ";")</label>
+                                <input class="form-control" type="text" id="options" name="options" formControlName="options">
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="component.get('type').value === 'MULTIPLE_CHOICE'">
+                            <div class="col-12" [formGroupName]="i">
+                                <label for="options" class="form-label">Optionen (getrennt durch Semikolon ";")</label>
+                                <input class="form-control" type="text" id="options" name="options" formControlName="options">
+                            </div>
+                            <div class="col-lg-3" [formGroupName]="i">
+                                <label for="minOptions" class="form-label">Minimum Auswahl an Optionen</label>
+                                <input class="form-control" type="number" id="minOptions" name="minOptions" formControlName="minOptions" min="0">
+                            </div>
+                            <div class="col-lg-3" [formGroupName]="i">
+                                <label for="maxOptions" class="form-label">Maximum Auswahl an Optionen</label>
+                                <input class="form-control" type="number" id="maxOptions" name="maxOptions" formControlName="maxOptions" min="0">
+                            </div>
+                        </ng-container>
+                    </div>
+              
+            </fieldset>
+            </ng-container>
+           </section>
+            
+        </form>
+
+<div class="container py-3">
     <h3>Komponenten hinzufügen</h3>
     <p>Fügen Sie hier die benötigten Komponenten der Vorlage hinzu.</p>
     <div class="components">
@@ -103,7 +112,9 @@
             Sie haben noch keine Komponenten hinzugefügt.
         </div>
     </ng-container>
-    
-
-    <button type="button" class="btn btn-primary w-100" (click)="addTemplate()">Vorlage erstellen</button>
 </div>
+<section>
+    <div class="container py-3">
+        <button type="button" class="btn btn-lg btn-primary w-100" (click)="addTemplate()">Vorlage erstellen</button>
+    </div>
+</section>

@@ -18,7 +18,9 @@
   
   /* Darker background on mouse-over */
   .component:hover {
-    background-color: #000;
+    background-color: #20e7a2;
+    color: #333;
+    font-weight: bold;
   }
 
   .component:disabled {
@@ -32,7 +34,10 @@
   }
 
   .component-row  {
-    border: 1px dotted black;
     margin-top: 1rem;
     padding: 1rem;
+  }
+
+  section {
+    background-color: #fff;
   }
