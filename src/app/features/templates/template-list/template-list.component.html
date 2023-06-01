@@ -10,7 +10,16 @@
         <tr *ngFor="let template of templates">
             <td>{{template.name}}</td>
             <td>{{template.createdAt | date : 'dd.MM.yyyy hh:mm'}} Uhr</td>
-            <td><button class="btn btn-danger" (click)="deleteTemplate(template.uid)">Löschen</button></td>
+            <td>
+                <div class="dropdown">
+                    <i class="btn bi bi-three-dots-vertical float-end" data-bs-toggle="dropdown" aria-expanded="false">
+                    </i>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Bearbeiten</a></li>
+                      <li><a class="dropdown-item" href="#" (click)="deleteTemplate(template.uid)">Löschen</a></li>
+                    </ul>
+                  </div>
+            </td>
         </tr>
 </table>
 <ng-template #noData>

@@ -93,16 +93,7 @@ export class ReplyCheckComponent implements OnInit {
   }
 
   valueChanged(value, index) {  
-    console.log(value)
     this.data.at(index).get('value').setValue(value);
   }
 
-  validateMultiSelect(value, index, component: TemplateComponent) {
-    console.log(value)
-    if (value.length < component.minOptions && value.length > component.maxOptions) {
-      this.notificationService.error('Es wurden zu wenige oder zu viele Optionen ausgewählt')
-    }
-
-    this.valueChanged(value, index);
-  }
 }

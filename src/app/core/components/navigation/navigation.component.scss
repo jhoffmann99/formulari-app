@@ -12,3 +12,26 @@
 .btn-logo {
   cursor: pointer;
 }
+
+/* change the background color */
+.navbar-custom {
+  background-color: #222870;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: #fff;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: #32ddf9;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #70fa37;
+}

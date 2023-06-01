@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-3 mb-md-0">
+<nav class="navbar navbar-custom navbar-expand-lg fixed-top mb-3 mb-md-0">
     <div class="container">
         <a class="navbar-brand m-0 btn-logo" (click)="navigateToStart()">
             formulari
@@ -24,13 +24,13 @@
             </ul>
             <div class="d-lg-flex justify-content-end align-items-center mb-2 mb-md-0">
                 <ng-container *ngIf="!(this.loggedIn$ | async)">
-                    <a class="btn btn-outline-secondary w-100" routerLink="/register"
+                    <a class="btn btn-outline-light w-100" routerLink="/register"
                         style="margin-right: 10px">Registrieren</a>
                     <a class="btn btn-primary w-100 mt-2 mt-md-0" routerLink="/login">Anmelden</a>
 
                 </ng-container>
                 <ng-container *ngIf="this.loggedIn$ | async">
-                    <a class="btn btn-outline-secondary w-100" *ngIf="this.loggedIn$ | async"
+                    <a class="btn btn-outline-light w-100" *ngIf="this.loggedIn$ | async"
                         (click)="logout()">Abmelden</a>
                 </ng-container>
 

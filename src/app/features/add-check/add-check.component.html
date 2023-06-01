@@ -1,7 +1,11 @@
-<div class="container my-5 pb-3">
-    <h2>Neuen Check erstellen</h2>
+<section>
+    <div class="container my-3">
+        <h2>Neuen Check erstellen</h2>
+    </div>
+</section>
+<div class="container py-5">
     <h3>Allgemein</h3>
-    <form class="row g-3 my-3">
+    <form class="row g-3">
         <div class="col-12">
             <label for="checkName" class="form-label">Check-Name</label>
             <input name="checkName" type="text" class="form-control" id="checkName" [(ngModel)]="checkName">
@@ -15,29 +19,36 @@
             <textarea name="greeting" class="form-control" id="name" [(ngModel)]="greeting"></textarea>
         </div>
     </form>
-    <h3>Vorlage & Versand</h3>
-    <p>Bitte wählen Sie hier eine der Vorlagen aus und legen die Versandart fest.</p>
-    <form class="row g-3 my-3">
-        <div class="col-md-6">
-            <label for="templateName" class="form-label">Vorlage</label>
-            <select [(ngModel)]="templateUid" [ngModelOptions]="{standalone: true}" class="form-select"
-                id="templateName">
-                <option selected>Bitte auswählen</option>
-                <option *ngFor="let template of templates" [ngValue]="template.uid">{{template.name}}</option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <label for="transmissionType" class="form-label">Versandart (aktuell nur E-Mail)</label>
-            <select [(ngModel)]="transmissionType" [ngModelOptions]="{standalone: true}" class="form-select"
-                id="transmissionType">
-                <option selected>Bitte auswählen</option>
-                <option value="E_MAIL">E-Mail</option>
-                <option value="SMS">SMS</option>
-                <option value="LINK">Link</option>
-            </select>
-        </div>
-    </form>
+</div>
+<section>
+    <div class="container py-5">
+        <h3>Vorlage & Versand</h3>
+        <p>Bitte wählen Sie hier eine der Vorlagen aus und legen die Versandart fest.</p>
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="templateName" class="form-label">Vorlage</label>
+                <select [(ngModel)]="templateUid" [ngModelOptions]="{standalone: true}" class="form-select"
+                    id="templateName">
+                    <option selected>Bitte auswählen</option>
+                    <option *ngFor="let template of templates" [ngValue]="template.uid">{{template.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="transmissionType" class="form-label">Versandart (aktuell nur E-Mail)</label>
+                <select [(ngModel)]="transmissionType" [ngModelOptions]="{standalone: true}" class="form-select"
+                    id="transmissionType">
+                    <option selected>Bitte auswählen</option>
+                    <option value="E_MAIL">E-Mail</option>
+                    <option value="SMS">SMS</option>
+                    <option value="LINK">Link</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</section>
 
+
+<div class="container py-5">
     <h3>Empfänger</h3>
     <p>Geben Sie hier einen oder mehrere Empfänger an die den Check erhalten sollen.</p>
     <ng-container *ngIf="recipients.length == 0">
@@ -45,7 +56,7 @@
             Sie haben noch keinen Empfänger hinzugefügt. Bitte fügen Sie mindestens einen Empfänger hinzu.
         </div>
     </ng-container>
-    <form #recipient="ngForm" class="row g-3 my-3">
+    <form #recipient="ngForm" class="row g-3">
         <div class="col-md-2">
             <label for="salutation" class="form-label">Anrede</label>
             <select name="salutation" type="email" class="form-select" id="salutation" ngModel>
@@ -95,6 +106,9 @@
             </ng-container>
         </tbody>
     </table>
-
-    <button type="button" class="btn btn-primary w-100" (click)="addCheck()" [disabled]="!isValid()">Check erstellen</button>
 </div>
+<section>
+    <div class="container py-5">
+        <button type="button" class="btn btn-lg btn-primary w-100" (click)="addCheck()" [disabled]="!isValid()">Check versenden</button>
+    </div>
+</section>
