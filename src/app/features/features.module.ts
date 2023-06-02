@@ -21,6 +21,8 @@ import { CheckDetailComponent } from './overview/check-detail/check-detail.compo
 import { TemplateListComponent } from './templates/template-list/template-list.component';
 import { TemplateComponent } from './templates/template/template.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { PricingComponent } from './pricing/pricing.component';
     TemplateListComponent,
     TemplateComponent,
     PricingComponent,
+    CheckoutComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +52,7 @@ import { PricingComponent } from './pricing/pricing.component';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPayPalModule
   ],
   exports: [],
 })
