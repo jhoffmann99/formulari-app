@@ -27,15 +27,24 @@ export class TemplateComponent implements OnInit {
   }
 
   deleteTemplate(uid: string) {
-    this.templateService.delete(uid).subscribe(result => {
-      this.initData();
-      this.notificationService.success('Die Vorlage wurde gelöscht');
+    this.templateService.delete(uid).subscribe({
+      next: (result) => {
+        this.initData();
+        this.notificationService.success('Die Vorlage wurde gelöscht');
+      },
+      error: (error) => {
+        this.notificationService.error('Beim Löschen der Vorlage ist ein Fehler aufgetreten');
+      },
     });
   }
-
   initData() {
-    this.templateService.findAll().subscribe((result) => {
-      this.templates = result.templates;
+    this.templateService.findAll().subscribe({
+      next: (result) => {
+        this.templates = result.templates;
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 }

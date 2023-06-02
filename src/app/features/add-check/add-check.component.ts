@@ -1,8 +1,5 @@
 import {
-  FormArray,
   FormBuilder,
-  FormControl,
-  FormGroup,
   NgForm,
 } from '@angular/forms';
 import {
@@ -26,7 +23,7 @@ export class AddCheckComponent implements OnInit {
   recipients: CheckRecipientDto[] = [];
   checkName: string = '';
   subject: string = '';
-  greeting: string = 'bitte machen Sie die folgenden Angaben und klicken Sie abschließend auf "Formular Absenden".';
+  greeting: string = 'Bitte machen Sie die folgenden Angaben und klicken Sie anschließend auf "Formular absenden".';
   templateUid: string = '';
   transmissionType: string = 'E_MAIL';
 
