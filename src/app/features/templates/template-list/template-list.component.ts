@@ -11,7 +11,7 @@ export class TemplateListComponent {
   templates: Template[];
 
   @Output()
-  delete: EventEmitter<string> = new EventEmitter();
+  delete = new EventEmitter<string>();
 
   deleteTemplate(uid: string) {
     this.delete.emit(uid);

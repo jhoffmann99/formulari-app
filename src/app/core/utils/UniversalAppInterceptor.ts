@@ -19,23 +19,23 @@ export class UniversalAppInterceptor implements HttpInterceptor {
   constructor(
     private readonly injector: Injector,
     private readonly jwtService: JWTService,
-      private readonly router: Router,
+    private readonly router: Router,
     private readonly cookieService: CookieService
-    //private readonly loadingService: LoadingService
-  ) {}
+  ) //private readonly loadingService: LoadingService
+  {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-   // this.loadingService.setLoading(true, req.url);
+    // this.loadingService.setLoading(true, req.url);
     this.authService = this.injector.get(AuthService);
     const token: string = this.authService.getToken();
 
     if (token) {
       // wenn der token abgelaufen ist wird dieser automatisch entfernt
       if (this.jwtService.isTokenExpired(token)) {
-          this.cookieService.delete('formulari');
+        this.cookieService.delete('formulari');
         this.router.navigateByUrl('/home');
       } else {
         this.authService.setAuthenticated(true);
