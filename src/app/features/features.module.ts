@@ -23,6 +23,7 @@ import { TemplateComponent } from './templates/template/template.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { StarterSubscriptionComponent } from './subscribe/starter-subscription/starter-subscription.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     TemplateComponent,
     PricingComponent,
     CheckoutComponent,
+    StarterSubscriptionComponent,
   ],
   imports: [
     CommonModule,
