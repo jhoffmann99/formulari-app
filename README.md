@@ -14,6 +14,14 @@ The frontend for formulari
 - Not Found Page (404-Page)
 - Responsive Design
 - Component Routing
+- Pricing Page
+- Paypal Checkout
+- Create Templates
+- Create Checks
+- Email Notifications
+- Handle Check Replies
+- Check Overview Page (Inbox, Outbox, Archive)
+- JWT Authorization/Authentication
 
 # Libs
 
