@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CheckService } from '../../core/services/check.service';
 import { CheckReply } from '../../core/services/check-replies';
 import { NotificationService } from '../../core/services/notification.service';
+import { SubscriptionService } from '../../core/services/subscription.service';
 
 @Component({
   selector: 'app-overview',
@@ -14,9 +15,12 @@ export class OverviewComponent implements OnInit {
 
   checkReply: CheckReply = null;
 
-  constructor(private checkService: CheckService, private notificationService: NotificationService) { }
+  constructor(private checkService: CheckService, private notificationService: NotificationService, private subscriptionService: SubscriptionService) { }
   
   ngOnInit(): void {
+
+    this.subscriptionService.getActiveSubscription().subscribe(result => console.log(result));
+
     this.checkService.getInbox().subscribe(response => {
       this.checkReplies = response;
       this.checkReply = null;
