@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CheckService } from '../../core/services/check.service';
 import { ReplyCheckRequestDto } from '../../core/services/ReplyCheckRequestDto';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { of, switchMap } from 'rxjs';
+import { catchError, of, switchMap } from 'rxjs';
 import { TemplateComponent } from '../../core/services/templateRequestDto';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { NotificationService } from '../../core/services/notification.service';

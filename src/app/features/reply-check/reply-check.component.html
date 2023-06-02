@@ -32,7 +32,11 @@
                             <input class="form-control" type="datetime-local" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
                         </ng-container>
                         <ng-container *ngIf="component.type == 'YES_NO'">
-                            <input type="checkbox" type="checkbox" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)"  ngModel>
+                            <select class="form-select" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
+                                <option selected>Bitte auswählen</option>
+                                <option value="ja">ja</option>
+                                <option value="ja">nein</option>
+                              </select>
                         </ng-container>
                         <ng-container *ngIf="component.type == 'SINGLE_CHOICE'">
                             <select class="form-select" [id]="component.name" [name]="component.name" [required]="component.required" (ngModelChange)="valueChanged($event, i)" ngModel>
