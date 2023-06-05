@@ -17,6 +17,7 @@ import { TemplateComponent } from './features/templates/template/template.compon
 import { PricingComponent } from './features/pricing/pricing.component';
 import { PremiumSubscriptionComponent } from './features/subscribe/premium-subscription/premium-subscription.component';
 import { SubscriptionnComponent } from './features/subscribe/subscription/subscription.component';
+import { ContactComponent } from './features/contact/contact.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'login', pathMatch: 'full', component: LoginComponent },
   { path: 'register', pathMatch: 'full', component: RegisterComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'contact', component: ContactComponent },
   {
     path: 'forgot-password',
     pathMatch: 'full',

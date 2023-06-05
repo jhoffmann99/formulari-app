@@ -1,7 +1,4 @@
-import {
-  FormBuilder,
-  NgForm,
-} from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import {
   CheckRecipientDto,
   CreateCheckRequestDto,
@@ -23,7 +20,8 @@ export class AddCheckComponent implements OnInit {
   recipients: CheckRecipientDto[] = [];
   checkName: string = '';
   subject: string = '';
-  greeting: string = 'Bitte machen Sie die folgenden Angaben und klicken Sie anschließend auf "Formular absenden".';
+  greeting: string =
+    'Bitte machen Sie die folgenden Angaben und klicken Sie anschließend auf "Formular absenden".';
   templateUid: string = '';
   transmissionType: string = 'E_MAIL';
 
@@ -63,6 +61,15 @@ export class AddCheckComponent implements OnInit {
   }
 
   addRecipient(form: NgForm) {
+    if (
+      form.value.salutation == '' ||
+      form.value.lastName == '' ||
+      form.value.email == ''
+    ) {
+      this.notificationService.error('Bitte fülle die Pflichtfelder aus');
+      return;
+    }
+
     this.recipients.push(form.value);
     form.resetForm();
   }

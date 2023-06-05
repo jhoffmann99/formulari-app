@@ -81,7 +81,7 @@ export class AddTemplateComponent {
           hint: null,
           required: true,
           max: 5,
-          step: 1
+          step: 1,
         })
       );
     }
@@ -204,6 +204,7 @@ export class AddTemplateComponent {
   }
 
   deleteComponent(index: number) {
-    console.log(this.components.get[index]);
+    this.components.removeAt(index);
+    this.notificationService.success('Die Komponente wurde entfernt');
   }
 }

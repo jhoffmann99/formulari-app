@@ -58,7 +58,7 @@
     </ng-container>
     <form #recipient="ngForm" class="row g-3">
         <div class="col-md-2">
-            <label for="salutation" class="form-label">Anrede</label>
+            <label for="salutation" class="form-label">Anrede*</label>
             <select name="salutation" type="email" class="form-select" id="salutation" ngModel>
                 <option selected>Bitte auswählen</option>
                 <option value="MR">Herr</option>
@@ -70,11 +70,11 @@
             <input name="firstName" type="text" class="form-control" id="firstName" ngModel>
         </div>
         <div class="col-md-5">
-            <label for="lastName" class="form-label">Nachname</label>
-            <input name="lastName" type="text" class="form-control" id="lastName" ngModel>
+            <label for="lastName" class="form-label">Nachname*</label>
+            <input name="lastName" type="text" class="form-control" id="lastName" ngModel required>
         </div>
         <div class="col-xl-5">
-            <label for="email" class="form-label">E-Mail</label>
+            <label for="email" class="form-label">E-Mail*</label>
             <input name="email" type="email" class="form-control" id="email" ngModel required>
         </div>
         <div class="col-xl-5">

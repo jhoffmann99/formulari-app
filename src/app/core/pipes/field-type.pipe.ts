@@ -31,6 +31,9 @@ export class FieldTypePipe implements PipeTransform {
       case 'YES_NO':
         returnedString = 'Ja/Nein Anfrage';
         break;
+        case 'RATING':
+          returnedString = 'Bewertungsanfrage';
+          break;
     }
 
     return returnedString;

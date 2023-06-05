@@ -18,6 +18,7 @@ export class ReplyCheckComponent implements OnInit {
   templateName: string = 'Formular';
   checkDetails: CheckDetails;
   uid: string = '';
+  intro = '';
 
   form: FormGroup = this.fb.group({
     uid: this.fb.control('', { nonNullable: false }),
@@ -43,6 +44,9 @@ export class ReplyCheckComponent implements OnInit {
         switchMap((checkDetails: CheckDetails) => {
           this.uid = checkDetails.checkId;
           this.checkDetails = checkDetails;
+          this.intro = checkDetails.salutation === 'MR' ? 'Sehr geehrter Herr ' : 'Sehr geehrte Frau ';
+          this.intro += checkDetails.firstName ? checkDetails.firstName : '';
+          this.intro += checkDetails.lastName ? ' ' + checkDetails.lastName : '';
           return  this.checkService.getTemplateForCheckUid(checkDetails.checkId);
         }
         )
