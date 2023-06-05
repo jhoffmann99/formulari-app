@@ -6,6 +6,7 @@ import { ReplyCheckRequestDto } from './ReplyCheckRequestDto';
 import { Observable } from 'rxjs';
 import { CheckReply } from './check-replies';
 import { CheckDetails } from './CheckDetails';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class CheckService {
   sendReminder(uid: string) {
     return this.http.post<any>(this.apiUrl + '/remind/' + uid, {}, {withCredentials: true});
   }
-  private apiUrl = 'http://localhost:3000/check';
+  private apiUrl = environment.apiUrl + '/check';
 
   constructor(private http: HttpClient) {}
 

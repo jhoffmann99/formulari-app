@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { createTemplateRequestDto } from './templateRequestDto';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TemplateService {
 
-  private apiUrl = 'http://localhost:3000/template';
+  private apiUrl = environment.apiUrl + '/template';
 
   constructor(private http: HttpClient) {}
 

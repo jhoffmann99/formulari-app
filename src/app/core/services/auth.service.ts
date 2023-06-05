@@ -4,13 +4,14 @@ import { SignUpRequest } from './signup-request';
 import { SignInRequest } from './signin-request';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = environment.apiUrl + '/auth';
 
   private readonly _isAuthenticated = new BehaviorSubject<boolean>(false);
 
