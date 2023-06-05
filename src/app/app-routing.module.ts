@@ -15,7 +15,8 @@ import { CheckSubmittedComponent } from './features/check-submitted/check-submit
 import { OverviewComponent } from './features/overview/overview.component';
 import { TemplateComponent } from './features/templates/template/template.component';
 import { PricingComponent } from './features/pricing/pricing.component';
-import { StarterSubscriptionComponent } from './features/subscribe/starter-subscription/starter-subscription.component';
+import { PremiumSubscriptionComponent } from './features/subscribe/premium-subscription/premium-subscription.component';
+import { SubscriptionnComponent } from './features/subscribe/subscription/subscription.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -34,14 +35,15 @@ const routes: Routes = [
     component: ForgotPasswordSuccessComponent,
   },
   { path: 'dashboard', component: OverviewComponent, canActivate: [AuthGuard] },
-  {path: 'template', component: TemplateComponent, canActivate: [AuthGuard]},
+  { path: 'template', component: TemplateComponent, canActivate: [AuthGuard] },
   {
     path: 'template/add',
     component: AddTemplateComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'subscription', component: SubscriptionnComponent },
   { path: 'subscription/plans', component: PricingComponent },
-  {path: 'subscription/starter-anually', component: StarterSubscriptionComponent},
+  { path: 'subscription/premium', component: PremiumSubscriptionComponent },
   { path: 'check/add', component: AddCheckComponent, canActivate: [AuthGuard] },
   { path: 'check/reply/:checkId', component: ReplyCheckComponent },
   { path: 'check/submitted', component: CheckSubmittedComponent },

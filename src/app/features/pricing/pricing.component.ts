@@ -18,8 +18,4 @@ export class PricingComponent {
     this.isAuthenticated$ = authService.isAuthenticated$;
   }
 
-  plans() {
-    console.log('click');
-    this.monthly = !this.monthly;
-  }
 }

@@ -23,7 +23,8 @@ import { TemplateComponent } from './templates/template/template.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NgxPayPalModule } from 'ngx-paypal';
-import { StarterSubscriptionComponent } from './subscribe/starter-subscription/starter-subscription.component';
+import { PremiumSubscriptionComponent } from './subscribe/premium-subscription/premium-subscription.component';
+import { SubscriptionnComponent } from './subscribe/subscription/subscription.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { StarterSubscriptionComponent } from './subscribe/starter-subscription/s
     TemplateComponent,
     PricingComponent,
     CheckoutComponent,
-    StarterSubscriptionComponent,
+    PremiumSubscriptionComponent,
+    SubscriptionnComponent,
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,7 @@ import { StarterSubscriptionComponent } from './subscribe/starter-subscription/s
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxPayPalModule
+    NgxPayPalModule,
   ],
   exports: [],
 })

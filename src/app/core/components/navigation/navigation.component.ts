@@ -50,4 +50,5 @@ export class NavigationComponent implements OnInit {
     this.activeTab = path;
     this.router.navigateByUrl(path);
   }
+
 }

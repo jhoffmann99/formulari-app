@@ -1,0 +1,66 @@
+<main>
+    <section class="section-4">
+        <div class="section-4-1">
+            <div class="section-main">
+                <h1>Formulari Premium (Monatsabonnement)</h1>
+                <p>Bitte beachte, dass sich das Abonnement automatisch jweils um einen Monat verlängert, solltest du das
+                    Abonnement nicht kündigen.</p>
+            </div>
+        </div>
+        <div class="section-4-2">
+            <div class="section-main">
+                <div class="pricing-body">
+
+                    <div class="pricing-body-plans">
+                        <div id="pricing__annually__plan active">
+                            <div>
+                                <div class="card">
+                                    <div class="card-header custom-card-header">
+                                        <h2>Premium Abo</h2>
+                                        <h2 class="card-price">19<span>€/Monat*</span></h2>
+                                        <p>Erhalte Zugriff auf alle Funktionen</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li><img src="assets/img/Checkmark.svg" alt="">
+                                                <p>2000 Checks pro Monat**</p>
+                                            </li>
+                                            <li><img src="assets/img/Checkmark.svg" alt="">
+                                                <p>Alle Basis Komponenten</p>
+                                            </li>
+                                            <li><img src="assets/img/Checkmark.svg" alt="">
+                                                <p>Zusätzliche Abfragekomponenten: Datei, Bild, Bewertung</p>
+                                            </li>
+                                            <li><img src="assets/img/Checkmark.svg" alt="">
+                                                <p>E-Mail Benachrichtigung bei übermittelten Checks</p>
+                                            </li>
+                                            <li><img src="assets/img/Checkmark.svg" alt="">
+                                                <p>Export von übermittelten Daten</p>
+                                            </li>
+                                            <li><img src="assets/img/Checkmark.svg" alt="">
+                                                <p>Statistiken</p>
+                                            </li>
+                                            <li><img src="assets/img/Checkmark.svg" alt="">
+                                                <p>E-Mail Support</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <app-checkout [subscriptionId]="subscriptionId" (onSuccess)="updateUserSubscription($event)" (onError)="showError($event)" (onCancel)="showCancel($event)"></app-checkout>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <p class="note">* Monatlich kündbar (über Paypal)</p>
+                <p class="note">** Checks an einen spezifischen Empfänger per E-Mail Versand (Einzelcheck). Checks
+                    können auch an mehrere Empfänger (Sammelcheck) per E-Mail versendet werden. Jeder Empfänger zählt in
+                    der Berechnung des Kontingents als einzelner Check.</p>
+            </div>
+        </div>
+    </section>
+
+</main>

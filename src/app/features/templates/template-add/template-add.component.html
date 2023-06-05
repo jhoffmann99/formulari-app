@@ -97,18 +97,13 @@
                         </div>
                     </ng-container>
                     <ng-container *ngIf="component.get('type').value === 'RATING'">
-
-                        <div class="col-lg-2" [formGroupName]="i">
-                            <label for="min" class="form-label">Minimum</label>
-                            <input class="form-control" type="number" id="min" name="min" formControlName="min" min="0">
-                        </div>
                         <div class="col-lg-2" [formGroupName]="i">
                             <label for="max" class="form-label">Maximum</label>
                             <input class="form-control" type="number" id="max" name="max" formControlName="max">
                         </div>
                         <div class="col-lg-2" [formGroupName]="i">
                             <label for="step" class="form-label">Schrittgröße</label>
-                            <input class="form-control" type="number" id="step" name="step" formControlName="step"
+                            <input class="form-control" type="number" id="step" step="0.1" name="step" formControlName="step"
                                 value="1">
                         </div>
                     </ng-container>

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SubscriptionService {
+  
   private apiUrl = 'http://localhost:3000/subscription';
 
   constructor(private http: HttpClient) {}
@@ -13,11 +14,13 @@ export class SubscriptionService {
     return this.http.post<any>(this.apiUrl, dto, {withCredentials: true});
   }
  */
+  
+  addSubscription(data: any) {
+    return this.http.post<any>(this.apiUrl, data, { withCredentials: true });
+  }
+
   getActiveSubscription() {
     return this.http.get<any>(this.apiUrl, {withCredentials: true});
   }
 
-  delete(uid: string) {
-    return this.http.delete<any>(this.apiUrl + '/' + uid, {withCredentials: true});
-  }
 }

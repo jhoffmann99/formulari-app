@@ -4,6 +4,7 @@ import { createTemplateRequestDto } from '../../../core/services/templateRequest
 import { NotificationService } from '../../../core/services/notification.service';
 import { TemplateService } from '../../../core/services/template.service';
 import { Router } from '@angular/router';
+import { SubscriptionService } from '../../../core/services/subscription.service';
 
 @Component({
   selector: 'app-add-template',
@@ -16,12 +17,20 @@ export class AddTemplateComponent {
     components: this.fb.array([]),
   });
 
+  subscriptionType: 'KOSTENLOS' | 'PREMIUM' = 'KOSTENLOS';
+
   constructor(
     private templateService: TemplateService,
     private fb: FormBuilder,
     private notificationService: NotificationService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private subscriptionService: SubscriptionService
+  ) {
+    this.subscriptionService.getActiveSubscription().subscribe({
+      next: () => (this.subscriptionType = 'PREMIUM'),
+      error: () => (this.subscriptionType = 'KOSTENLOS'),
+    });
+  }
 
   get components(): FormArray {
     return this.form.get('components') as FormArray;
@@ -53,23 +62,29 @@ export class AddTemplateComponent {
       case 'MULTIPLE_CHOICE':
         this.addMultipleChoiceField();
         break;
-        case 'RATING':
-          this.addRatingField();
-          break;
+      case 'RATING':
+        this.addRatingField();
+        break;
     }
   }
   addRatingField() {
-    this.components.push(
-      this.fb.group({
-        type: 'RATING',
-        name: null,
-        description: null,
-        hint: null,
-        required: true,
-        min: 0,
-        max: 5
-      })
-    );
+    if (this.subscriptionType === 'KOSTENLOS') {
+      this.notificationService.warning(
+        'Diese Komponente steht nur Kunden mit einem PREMIUM Abonnement zur Verüfung'
+      );
+    } else {
+      this.components.push(
+        this.fb.group({
+          type: 'RATING',
+          name: null,
+          description: null,
+          hint: null,
+          required: true,
+          max: 5,
+          step: 1
+        })
+      );
+    }
   }
   addMultipleChoiceField() {
     this.components.push(

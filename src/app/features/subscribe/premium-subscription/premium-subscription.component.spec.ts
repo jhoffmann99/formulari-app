@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StarterSubscriptionComponent } from './starter-subscription.component';
+import { PremiumSubscriptionComponent } from './premium-subscription.component';
 
 describe('StarterSubscriptionComponent', () => {
-  let component: StarterSubscriptionComponent;
-  let fixture: ComponentFixture<StarterSubscriptionComponent>;
+  let component: PremiumSubscriptionComponent;
+  let fixture: ComponentFixture<PremiumSubscriptionComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StarterSubscriptionComponent]
+      declarations: [PremiumSubscriptionComponent],
     });
-    fixture = TestBed.createComponent(StarterSubscriptionComponent);
+    fixture = TestBed.createComponent(PremiumSubscriptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

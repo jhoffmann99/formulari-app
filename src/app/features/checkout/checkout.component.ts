@@ -15,7 +15,7 @@ export class CheckoutComponent {
   subscriptionId: string = '';
 
   @Output()
-  onSuccess = new EventEmitter<string>();
+  onSuccess = new EventEmitter<any>();
     
   @Output()
   onCancel = new EventEmitter<string>();
@@ -52,10 +52,7 @@ export class CheckoutComponent {
           actions
         );
         actions.subscription.get().then((details) => {
-          console.log(
-            'onApprove - you can get full order details inside onApprove: ',
-            details
-          );
+          this.onSuccess.emit(details);
         });
       },
       onCancel: (data, actions) => {

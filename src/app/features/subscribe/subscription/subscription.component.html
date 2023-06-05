@@ -1,0 +1,33 @@
+<div class="container my-5 py-3">
+    <h2>Informationen zu deinem Abonnement</h2>
+    <ul>
+        <li>Status: {{subscription.status}} {{subscription.status === 'ACTIVE'? '; Aktiv seit: ' + (subscription.activatedAt | date : 'dd.MM.yyyy HH:mm'): ''}}</li>
+    </ul>
+    <h2>Enthaltene Funktionen</h2>
+    <div class="features">
+        <ul>
+            <li><img src="assets/img/Checkmark.svg" alt="">
+                <p>Bis zu 2000 Checks pro Monat**</p>
+            </li>
+            <li><img src="assets/img/Checkmark.svg" alt="">
+                <p>Alle Basis Komponenten</p>
+            </li>
+            <li><img src="assets/img/Checkmark.svg" alt="">
+                <p>Zusätzliche Abfragekomponenten: Datei, Bild, Bewertung</p>
+            </li>
+            <li><img src="assets/img/Checkmark.svg" alt="">
+                <p>E-Mail Benachrichtigung bei übermittelten Checks</p>
+            </li>
+            <li><img src="assets/img/Checkmark.svg" alt="">
+                <p>Export von übermittelten Daten</p>
+            </li>
+            <li><img src="assets/img/Checkmark.svg" alt="">
+                <p>Statistiken</p>
+            </li>
+            <li><img src="assets/img/Checkmark.svg" alt="">
+                <p>E-Mail Support</p>
+            </li>
+        </ul>
+    <p>Dein Abonnement kannst du direkt über den Zahlungsdienstleiter PayPal verwalten.</p>
+    </div>
+</div>
