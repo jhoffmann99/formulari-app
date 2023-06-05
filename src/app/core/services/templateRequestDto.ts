@@ -18,4 +18,5 @@ export interface TemplateComponent {
   options?: string;
   minOptions?: number;
   maxOptions?: number;
+  step?: number;
 }

@@ -47,13 +47,29 @@ export class AddTemplateComponent {
       case 'YES_NO':
         this.addYesNoField();
         break;
-        case 'SINGLE_CHOICE':
-          this.addSingleChoiceField();
-          break;
-          case 'MULTIPLE_CHOICE':
-          this.addMultipleChoiceField();
+      case 'SINGLE_CHOICE':
+        this.addSingleChoiceField();
+        break;
+      case 'MULTIPLE_CHOICE':
+        this.addMultipleChoiceField();
+        break;
+        case 'RATING':
+          this.addRatingField();
           break;
     }
+  }
+  addRatingField() {
+    this.components.push(
+      this.fb.group({
+        type: 'RATING',
+        name: null,
+        description: null,
+        hint: null,
+        required: true,
+        min: 0,
+        max: 5
+      })
+    );
   }
   addMultipleChoiceField() {
     this.components.push(
@@ -65,7 +81,7 @@ export class AddTemplateComponent {
         required: true,
         options: null,
         minOptions: null,
-        maxOptions: null
+        maxOptions: null,
       })
     );
   }
@@ -77,7 +93,7 @@ export class AddTemplateComponent {
         description: null,
         hint: null,
         required: true,
-        options: null
+        options: null,
       })
     );
   }
