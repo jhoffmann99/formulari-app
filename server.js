@@ -62,6 +62,7 @@ app.use(
   cors({
     origin: "https://formulari-backend.herokuapp.com",
     credentials: true
+    
   })
 );
 
