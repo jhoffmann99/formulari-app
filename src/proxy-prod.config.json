@@ -1,8 +1,8 @@
 {
   "/api/*": {
     "target": "https://formulari-backend.herokuapp.com/",
-    "secure": false,
-    "changeOrigin": true,
+    "secure": true,
+    "changeOrigin": false,
     "logLevel": "debug"
   }
 }
