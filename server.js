@@ -60,9 +60,14 @@ app.disable("x-powered-by");
 
 app.use(
   cors({
-    origin: "http://localhost:4200"
+    origin: "*"
   })
 );
+
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  next();
+});
 
 app.get("/*", function (req, res) {
   res
