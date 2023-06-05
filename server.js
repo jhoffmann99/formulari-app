@@ -62,11 +62,12 @@ app.use(
   cors({
     origin: "https://formulari-backend.herokuapp.com",
     credentials: true
-    
+
   })
 );
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://formulari-backend.herokuapp.com");
   res.setHeader('Access-Control-Allow-Credentials', 'true')
   next();
 });
