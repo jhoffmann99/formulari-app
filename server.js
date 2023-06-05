@@ -60,7 +60,7 @@ app.disable("x-powered-by");
 
 app.use(
   cors({
-    origin: "*"
+    origin: "http://localhost:4200"
   })
 );
 
