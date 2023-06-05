@@ -13,12 +13,14 @@ import { environment } from '../../../environments/environment';
 })
 export class CheckService {
 
-  sendReminder(uid: string) {
-    return this.http.post<any>(this.apiUrl + '/remind/' + uid, {}, {withCredentials: true});
-  }
+
   private apiUrl = environment.apiUrl + '/check';
 
   constructor(private http: HttpClient) {}
+
+  sendReminder(uid: string) {
+    return this.http.post<any>(this.apiUrl + '/remind/' + uid, {}, {withCredentials: true});
+  }
 
   createCheck(dto: CreateCheckRequestDto) {
     return this.http.post<any>(this.apiUrl, dto, {withCredentials: true});

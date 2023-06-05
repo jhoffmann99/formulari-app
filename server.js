@@ -60,7 +60,8 @@ app.disable("x-powered-by");
 
 app.use(
   cors({
-    origin: "*"
+    origin: "https://formulari-backend.herokuapp.com",
+    credentials: true
   })
 );
 

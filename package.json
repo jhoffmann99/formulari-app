@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && gzip-all \"dist/formulari-app/*.*\"",
+    "build": "ng build --configuration=production && gzip-all \"dist/formulari-app/*.*\"",
     "start:prod": "node server.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
