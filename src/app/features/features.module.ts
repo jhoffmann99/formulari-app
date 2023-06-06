@@ -26,6 +26,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { PremiumSubscriptionComponent } from './subscribe/premium-subscription/premium-subscription.component';
 import { SubscriptionnComponent } from './subscribe/subscription/subscription.component';
 import { ContactComponent } from './contact/contact.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { ContactComponent } from './contact/contact.component';
     PremiumSubscriptionComponent,
     SubscriptionnComponent,
     ContactComponent,
+    ImprintComponent,
+    FaqComponent,
   ],
   imports: [
     CommonModule,

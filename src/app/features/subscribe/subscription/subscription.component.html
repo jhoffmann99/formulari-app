@@ -1,4 +1,4 @@
-<div class="container my-5 py-3">
+<div class="container my-5 py-3" *ngIf="!loading">
     <h2>Informationen zu deinem Abonnement</h2>
     <ul>
         <li>Status: {{subscription.status}} {{subscription.status === 'ACTIVE'? '; Aktiv seit: ' + (subscription.activatedAt | date : 'dd.MM.yyyy HH:mm'): ''}}</li>

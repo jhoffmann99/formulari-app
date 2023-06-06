@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SubscriptionnComponent implements OnInit {
   subscription: any;
+  loading = true;
 
   constructor(
     private subscriptionService: SubscriptionService,
@@ -19,6 +20,7 @@ export class SubscriptionnComponent implements OnInit {
     this.subscriptionService.getActiveSubscription().subscribe({
       next: (subscription) => {
         this.subscription = subscription;
+        this.loading = false;
       },
       error: (error) => {
         this.router.navigateByUrl('subscription/premium');
