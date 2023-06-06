@@ -28,6 +28,8 @@ import { SubscriptionnComponent } from './subscribe/subscription/subscription.co
 import { ContactComponent } from './contact/contact.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { FaqComponent } from './faq/faq.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { AgbComponent } from './agb/agb.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { FaqComponent } from './faq/faq.component';
     ContactComponent,
     ImprintComponent,
     FaqComponent,
+    PrivacyComponent,
+    AgbComponent,
   ],
   imports: [
     CommonModule,

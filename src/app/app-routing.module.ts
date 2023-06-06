@@ -20,6 +20,8 @@ import { SubscriptionnComponent } from './features/subscribe/subscription/subscr
 import { ContactComponent } from './features/contact/contact.component';
 import { ImprintComponent } from './features/imprint/imprint.component';
 import { FaqComponent } from './features/faq/faq.component';
+import { PrivacyComponent } from './features/privacy/privacy.component';
+import { AgbComponent } from './features/agb/agb.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -52,6 +54,8 @@ const routes: Routes = [
   { path: 'check/reply/:checkId', component: ReplyCheckComponent },
   { path: 'check/submitted', component: CheckSubmittedComponent },
   { path: 'imprint', component: ImprintComponent },
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'agb', component: AgbComponent },
   {path: 'faq', component: FaqComponent},
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
