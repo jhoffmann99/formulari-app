@@ -28,11 +28,11 @@ export class TemplateComponent implements OnInit {
 
   deleteTemplate(uid: string) {
     this.templateService.delete(uid).subscribe({
-      next: (result) => {
+      next: () => {
         this.initData();
         this.notificationService.success('Die Vorlage wurde gelöscht');
       },
-      error: (error) => {
+      error: () => {
         this.notificationService.error('Beim Löschen der Vorlage ist ein Fehler aufgetreten');
       },
     });

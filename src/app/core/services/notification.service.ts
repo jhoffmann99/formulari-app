@@ -7,7 +7,6 @@ import { NotificationType } from '../models/NotificationType';
   providedIn: 'root'
 })
 export class NotificationService {
-  constructor() {}
 
   private notification$: Subject<INotification> = new BehaviorSubject(null);
 

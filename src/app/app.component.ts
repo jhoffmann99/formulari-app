@@ -9,7 +9,7 @@ import { AuthService } from './core/services/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  loading: boolean = false;
+  loading = false;
 
   loggedIn$: Observable<boolean>;
 

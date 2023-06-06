@@ -5,8 +5,6 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class JWTService {
-  constructor() {}
-
   decodeToken(token) {
     return jwt_decode(token);
   }

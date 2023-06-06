@@ -192,12 +192,12 @@ export class AddTemplateComponent {
       components: this.components.getRawValue(),
     };
     this.templateService.createTemplate(dto).subscribe(
-      (data) => {
+      () => {
         this.form.reset();
         this.notificationService.success('Die Vorlage wurde erstellt');
         this.router.navigateByUrl('template');
       },
-      (error) => {
+      () => {
         this.notificationService.error('Es ist ein Fehler aufgetreten');
       }
     );

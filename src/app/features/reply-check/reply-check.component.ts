@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CheckService } from '../../core/services/check.service';
 import { ReplyCheckRequestDto } from '../../core/services/ReplyCheckRequestDto';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { catchError, of, switchMap } from 'rxjs';
+import { of, switchMap } from 'rxjs';
 import { TemplateComponent } from '../../core/services/templateRequestDto';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { NotificationService } from '../../core/services/notification.service';
@@ -15,9 +15,9 @@ import { CheckDetails } from '../../core/services/CheckDetails';
 })
 export class ReplyCheckComponent implements OnInit {
   templateComponents: TemplateComponent[] = [];
-  templateName: string = 'Formular';
+  templateName = 'Formular';
   checkDetails: CheckDetails;
-  uid: string = '';
+  uid = '';
   intro = '';
 
   form: FormGroup = this.fb.group({
@@ -39,27 +39,33 @@ export class ReplyCheckComponent implements OnInit {
         switchMap((params: ParamMap) => of(params.get('checkId'))),
         switchMap((checkId: string) => {
           return this.checkService.getCheckDetails(checkId);
-
         }),
         switchMap((checkDetails: CheckDetails) => {
           this.uid = checkDetails.checkId;
           this.checkDetails = checkDetails;
-          this.intro = checkDetails.salutation === 'MR' ? 'Sehr geehrter Herr ' : 'Sehr geehrte Frau ';
+          this.intro =
+            checkDetails.salutation === 'MR'
+              ? 'Sehr geehrter Herr '
+              : 'Sehr geehrte Frau ';
           this.intro += checkDetails.firstName ? checkDetails.firstName : '';
-          this.intro += checkDetails.lastName ? ' ' + checkDetails.lastName : '';
-          return  this.checkService.getTemplateForCheckUid(checkDetails.checkId);
-        }
-        )
+          this.intro += checkDetails.lastName
+            ? ' ' + checkDetails.lastName
+            : '';
+          return this.checkService.getTemplateForCheckUid(checkDetails.checkId);
+        })
       )
-      .subscribe((data) => {
-        this.form.get('uid').setValue(this.uid);
-        this.templateName = data.name;
-        this.templateComponents = data.components;
-        data.components.forEach(component => {
-          this.addComponent(component);
-        });
-      }, error => {
-        this.router.navigateByUrl('/error')
+      .subscribe({
+        next: (data) => {
+          this.form.get('uid').setValue(this.uid);
+          this.templateName = data.name;
+          this.templateComponents = data.components;
+          data.components.forEach((component) => {
+            this.addComponent(component);
+          });
+        },
+        error: () => {
+          this.router.navigateByUrl('/error');
+        },
       });
   }
 
@@ -68,36 +74,38 @@ export class ReplyCheckComponent implements OnInit {
   }
 
   addComponent(component: TemplateComponent) {
-    const type = component.type;    
-    
     this.addTextField(component);
   }
 
   addTextField(component: TemplateComponent) {
-    this.data.push( this.fb.group({
-      name: component.name,
-      value: ''
-    }))
-
+    this.data.push(
+      this.fb.group({
+        name: component.name,
+        value: '',
+      })
+    );
   }
 
- 
   replyCheck() {
     const dto: ReplyCheckRequestDto = {
       uid: this.uid,
-      data: this.data.value
+      data: this.data.value,
     };
 
-    this.checkService.replyCheck(dto).subscribe((data) => {
-      this.notificationService.success('Das Formular wurde erfolgreich abgesendet');
-      this.router.navigateByUrl('check/submitted');
-    }, error => {
-      this.notificationService.error('Es ist ein Fehler aufgetreten');
+    this.checkService.replyCheck(dto).subscribe({
+      next: () => {
+        this.notificationService.success(
+          'Das Formular wurde erfolgreich abgesendet'
+        );
+        this.router.navigateByUrl('check/submitted');
+      },
+      error: () => {
+        this.notificationService.error('Es ist ein Fehler aufgetreten');
+      },
     });
   }
 
-  valueChanged(value, index) {  
+  valueChanged(value, index) {
     this.data.at(index).get('value').setValue(value);
   }
-
 }

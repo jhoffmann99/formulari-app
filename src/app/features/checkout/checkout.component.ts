@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   IPayPalConfig,
-  ICreateOrderRequest,
   ICreateSubscriptionRequest,
 } from 'ngx-paypal';
 
@@ -12,16 +11,16 @@ import {
 })
 export class CheckoutComponent {
   @Input()
-  subscriptionId: string = '';
+  subscriptionId = '';
 
   @Output()
-  onSuccess = new EventEmitter<any>();
+  success = new EventEmitter<any>();
     
   @Output()
-  onCancel = new EventEmitter<string>();
+  cancel = new EventEmitter<string>();
     
   @Output()
-  onError = new EventEmitter<string>();
+  error = new EventEmitter<string>();
 
   public payPalConfig?: IPayPalConfig;
 
@@ -36,7 +35,7 @@ export class CheckoutComponent {
       clientId:
         'AcqM2QgzJJ2UNs1oecEgiQ-kwIoEui3CfN6U07kdyOM8DowLkIJcdHBrMC7nryPo8am15yLQZnaFkNMT',
       intent: 'subscription',
-      createSubscriptionOnClient: (data) =>
+      createSubscriptionOnClient: () =>
         <ICreateSubscriptionRequest>{
           plan_id: this.subscriptionId,
         },
@@ -52,23 +51,19 @@ export class CheckoutComponent {
           actions
         );
         actions.subscription.get().then((details) => {
-          this.onSuccess.emit(details);
+          this.success.emit(details);
         });
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
-          this.onCancel.emit('Der Bezahlvorgang wurde abgebrochen.');
+          this.cancel.emit('Der Bezahlvorgang wurde abgebrochen.');
       },
       onError: (err) => {
         console.log('OnError', err);
-          this.onError.emit('Die Zahlungsabwicklung schlug fehl.');
-      },
-      onClick: (data, actions) => {
-        
-        this.resetStatus();
-      },
+          this.error.emit('Die Zahlungsabwicklung schlug fehl.');
+      }
     };
   }
 
-  resetStatus() {}
+
 }

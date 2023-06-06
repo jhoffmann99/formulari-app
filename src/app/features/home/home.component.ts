@@ -7,7 +7,6 @@ import Typed, { TypedOptions } from 'typed.js';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
 
   ngOnInit(): void {
     const options: TypedOptions = {

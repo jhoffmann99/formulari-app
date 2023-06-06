@@ -66,7 +66,7 @@ export class OverviewComponent implements OnInit {
   }
 
   sendReminderMail(uid: string) {
-    this.checkService.sendReminder(uid).subscribe(result => {
+    this.checkService.sendReminder(uid).subscribe(() => {
       this.notificationService.success('Eine Erinnerungsmail wurde versendet.');
     });
   }

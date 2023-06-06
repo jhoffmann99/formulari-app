@@ -51,7 +51,7 @@
 <div class="container py-5">
     <h3>Empfänger</h3>
     <p>Geben Sie hier einen oder mehrere Empfänger an die den Check erhalten sollen.</p>
-    <ng-container *ngIf="recipients.length == 0">
+    <ng-container *ngIf="recipients.length === 0">
         <div class="bd-callout bd-callout-info">
             Sie haben noch keinen Empfänger hinzugefügt. Bitte fügen Sie mindestens einen Empfänger hinzu.
         </div>
@@ -98,10 +98,10 @@
         <tbody>
             <ng-container *ngFor="let recipient of recipients">
                 <tr>
-                    <td scope="row">{{recipient.firstName}}</td>
-                    <td scope="row">{{recipient.lastName}}</td>
-                    <td scope="row">{{recipient.email}}</td>
-                    <td scope="row">{{recipient.mobilePhone}}</td>
+                    <td>{{recipient.firstName}}</td>
+                    <td>{{recipient.lastName}}</td>
+                    <td>{{recipient.email}}</td>
+                    <td>{{recipient.mobilePhone}}</td>
                 </tr>
             </ng-container>
         </tbody>

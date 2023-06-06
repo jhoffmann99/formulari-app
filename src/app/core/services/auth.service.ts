@@ -53,7 +53,7 @@ export class AuthService {
   }
 
   public getToken() {
-    let token = sessionStorage.getItem('token') as string;
+    const token = sessionStorage.getItem('token') as string;
     return token;
   }
 }

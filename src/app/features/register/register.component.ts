@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ interface RegisterForm {
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   form: FormGroup = new FormGroup<RegisterForm>({
     firstName: new FormControl('', { nonNullable: true }),
     lastName: new FormControl('', { nonNullable: true }),
@@ -33,8 +33,6 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private notificationService: NotificationService
   ) {}
-
-  ngOnInit(): void {}
 
   register() {
     this.authService.signUp(this.form.value).subscribe({

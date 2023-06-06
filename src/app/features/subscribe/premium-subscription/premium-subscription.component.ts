@@ -25,10 +25,10 @@ export class PremiumSubscriptionComponent {
   }
 
   showError(error: string) {
-    this.notificationService.error('Es ist ein Fehler aufgetreten');
+    this.notificationService.error(error);
   }
 
-  showCancel(error: string) {
-    this.notificationService.success('Der Vorgang wurde abgebrochen');
+  showCancel(cancel: string) {
+    this.notificationService.success(cancel);
   }
 }

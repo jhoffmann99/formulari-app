@@ -6,9 +6,8 @@ import {
   HttpRequest,
   HttpHeaders,
   HttpErrorResponse,
-  HttpResponse,
 } from '@angular/common/http';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()

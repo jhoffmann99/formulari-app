@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ interface LoginForm {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   form: FormGroup = new FormGroup<LoginForm>({
     email: new FormControl(),
     password: new FormControl(),
@@ -26,15 +26,14 @@ export class LoginComponent implements OnInit {
     private notificationService: NotificationService
   ) {}
 
-  ngOnInit(): void {}
 
   login() {
     this.authService.signIn(this.form.value).subscribe(
-      (resp) => {
+      () => {
         this.notificationService.success("Du bist nun angemeldet");
         this.router.navigateByUrl('dashboard');
       },
-      (error) => {
+      () => {
         this.notificationService.error(
           'Die Anmeldung konnte nicht ausgeführt werden'
         );

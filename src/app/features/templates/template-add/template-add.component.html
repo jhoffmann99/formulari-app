@@ -129,7 +129,7 @@
         <button class="component" disabled>Datei</button>
         <button class="component" (click)="addComponent('RATING')">Bewertung</button>
     </div>
-    <ng-container *ngIf="components.length == 0">
+    <ng-container *ngIf="components.length === 0">
         <div class="bd-callout bd-callout-info">
             Sie haben noch keine Komponenten hinzugefügt.
         </div>

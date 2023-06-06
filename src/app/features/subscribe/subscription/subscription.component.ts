@@ -22,7 +22,7 @@ export class SubscriptionnComponent implements OnInit {
         this.subscription = subscription;
         this.loading = false;
       },
-      error: (error) => {
+      error: () => {
         this.router.navigateByUrl('subscription/premium');
       },
     });

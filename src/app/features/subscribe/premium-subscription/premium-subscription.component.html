@@ -46,7 +46,7 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <app-checkout [subscriptionId]="subscriptionId" (onSuccess)="updateUserSubscription($event)" (onError)="showError($event)" (onCancel)="showCancel($event)"></app-checkout>
+                                        <app-checkout [subscriptionId]="subscriptionId" (success)="updateUserSubscription($event)" (error)="showError($event)" (cancel)="showCancel($event)"></app-checkout>
                                     </div>
                                 </div>
                             </div>

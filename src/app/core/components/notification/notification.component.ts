@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
@@ -16,10 +17,10 @@ import { NotificationService } from '../../services/notification.service';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss'],
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent implements OnInit, OnDestroy {
   @ViewChild('notificationContainer') container: ElementRef<HTMLDivElement>;
 
-  private _subscribed: boolean = true;
+  private _subscribed = true;
   private classMap: Map<NotificationType, string>;
 
   constructor(
@@ -45,10 +46,10 @@ export class NotificationComponent implements OnInit {
   }
 
   private render(notification: INotification) {
-    let notificationBox = this.renderer.createElement('div');
-    let content = this.renderer.createElement('div');
+    const notificationBox = this.renderer.createElement('div');
+    const content = this.renderer.createElement('div');
     const boxColorClass = this.classMap.get(notification.type);
-    let classesToAdd = ['alert', boxColorClass];
+    const classesToAdd = ['alert', boxColorClass];
     classesToAdd.forEach((x) => this.renderer.addClass(notificationBox, x));
     this.renderer.setStyle(
       notificationBox,

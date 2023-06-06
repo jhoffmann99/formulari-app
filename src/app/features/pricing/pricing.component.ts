@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class PricingComponent {
 
-
-  monthly = true;
-
-  constructor() {
-  
-  }
-
 }

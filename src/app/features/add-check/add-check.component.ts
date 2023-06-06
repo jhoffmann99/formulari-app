@@ -18,12 +18,12 @@ import { Router } from '@angular/router';
 export class AddCheckComponent implements OnInit {
   templates: Template[] = [];
   recipients: CheckRecipientDto[] = [];
-  checkName: string = '';
-  subject: string = '';
-  greeting: string =
+  checkName = '';
+  subject = '';
+  greeting =
     'Bitte machen Sie die folgenden Angaben und klicken Sie anschließend auf "Formular absenden".';
-  templateUid: string = '';
-  transmissionType: string = 'E_MAIL';
+  templateUid = '';
+  transmissionType = 'E_MAIL';
 
   constructor(
     private checkService: CheckService,
@@ -50,11 +50,11 @@ export class AddCheckComponent implements OnInit {
     };
 
     this.checkService.createCheck(dto).subscribe(
-      (data) => {
+      () => {
         this.notificationService.success('Der Check wurde erstellt');
         this.router.navigateByUrl('dashboard');
       },
-      (error) => {
+      () => {
         this.notificationService.error('Es ist ein Fehler aufgetreten');
       }
     );
