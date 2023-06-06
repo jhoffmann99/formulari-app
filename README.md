@@ -24,6 +24,45 @@ The frontend for formulari
 - JWT Authorization/Authentication via HTTP Authorization Header
 
 ## Screenshots
+### Home Page
+![Alt text](./src/assets/app/formulari-home.png?raw=true "Home Page")
+
+### Register Page
+![Alt text](./src/assets/app/formulari-register.png?raw=true "Register Page")
+
+### Login Page
+![Alt text](./src/assets/app/formulari-login.png?raw=true "Login Page")
+
+### Dashboard Page
+![Alt text](./src/assets/app/formulari-dashboard.png?raw=true "Dashboard Page")
+
+### Template List Page
+![Alt text](./src/assets/app/formulari-templates.png?raw=true "Template List Page")
+
+### Add Template Page
+![Alt text](./src/assets/app/formulari-template-add.png?raw=true "Add Template Page")
+
+### Add Check Page
+![Alt text](./src/assets/app/formulari-check.png?raw=true "Add Check Page")
+
+### Customer Check Reply Page
+![Alt text](./src/assets/app/formulari-check-reply.png?raw=true "Check Reply Page")
+
+### Check Submitted Page
+![Alt text](./src/assets/app/formulari-check-submitted.png?raw=true "Check submitted Page")
+
+### Outbox Page
+![Alt text](./src/assets/app/formulari-outbox.png?raw=true "Ausgang Page")
+
+### Archive Page
+![Alt text](./src/assets/app/formulari-archiv.png?raw=true "Archiv Page")
+
+### Paypal Integration
+![Alt text](./src/assets/app/formulari-paypal.png?raw=true "Paypal Integration")
+
+### Active Subscription Page
+![Alt text](./src/assets/app/formulari-subscription-active.png?raw=true "Active Subscription Page")
+
 
 ## Libs
 
