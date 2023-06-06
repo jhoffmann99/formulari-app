@@ -1,3 +1,6 @@
-<app-menu (itemSelected)="loadChecks($event)"></app-menu>
+<div class="wrapper">
+    <app-menu (itemSelected)="loadChecks($event)"></app-menu>
+</div>
+
 <app-checks [checks]="checkReplies" (checkSelected)="showDetails($event)"></app-checks>
 <app-check-detail [check]="checkReply" (reminder)="sendReminderMail($event)"></app-check-detail>

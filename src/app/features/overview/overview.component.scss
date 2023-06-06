@@ -1,7 +1,9 @@
 :host{
     display: grid;
-    min-height: 100vh;
+    height: calc(100vh - 85px);
+    overflow-y: hidden;
     margin-top: 2rem;
+    position: relative;
 }
 
 app-menu {
@@ -12,10 +14,27 @@ app-menu {
 @media (min-width: 1440px){
     :host {
         grid-template-columns: 400px 400px 1fr;
+        grid-template-rows: repeat(3, 100%);
     }
 
-    app-menu,
     app-checks {
         border-right: 1px solid #ccc;
+    }
+
+    .wrapper {
+        position: relative;
+        display: block;
+        background: #fff;
+        border-right: 1px solid #ccc;
+    }
+
+    app-menu {
+        position: fixed;
+        width: 399px;
+
+    }
+
+    app-menu, app-checks, check-detail {
+        overflow-y: auto;
     }
 }
