@@ -11,12 +11,12 @@ import { AuthService } from './core/services/auth.service';
 export class AppComponent implements OnInit {
   loading: boolean = false;
 
-  loggedIn: boolean;
+  loggedIn$: Observable<boolean>;
 
   constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit(): void {
-    this.loggedIn = this.authService.isUserSignedin();
+    this.loggedIn$ = this.authService.isAuthenticated$;
   }
 
 }
