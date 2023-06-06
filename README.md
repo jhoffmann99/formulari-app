@@ -1,7 +1,7 @@
 # Formulari app
 The frontend for formulari
 
-# Functionality
+## Functionality
 
 - Navigation Component
 - Footer Component
@@ -16,14 +16,16 @@ The frontend for formulari
 - Component Routing
 - Pricing Page
 - Paypal Checkout
-- Create Templates
+- Create Templates with diverse components (text field, number field, single/multiple choice, rating, date, time, datetime, etc.)
 - Create Checks
 - Email Notifications
 - Handle Check Replies
 - Check Overview Page (Inbox, Outbox, Archive)
-- JWT Authorization/Authentication
+- JWT Authorization/Authentication via HTTP Authorization Header
 
-# Libs
+## Screenshots
+
+## Libs
 
 - Bootstrap
 
