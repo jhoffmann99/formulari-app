@@ -1,27 +1,7 @@
 # Formulari app
 The frontend for formulari
 
-## Functionality
-
-- Navigation Component
-- Footer Component
-- Login Page
-- Registration Page
-- Forgot Password Page (Initiation)
-- Reset Password Page
-- Reset Password Success Page
-- Home Page
-- Not Found Page (404-Page)
-- Responsive Design
-- Component Routing
-- Pricing Page
-- Paypal Checkout
-- Create Templates with diverse components (text field, number field, single/multiple choice, rating, date, time, datetime, etc.)
-- Create Checks
-- Email Notifications
-- Handle Check Replies
-- Check Overview Page (Inbox, Outbox, Archive)
-- JWT Authorization/Authentication via HTTP Authorization Header
+The formulari backend (REST API) can be found [here](https://github.com/jhoffmann99/formulari)
 
 ## Screenshots
 ### Home Page
@@ -63,11 +43,34 @@ The frontend for formulari
 ### Active Subscription Page
 ![Alt text](./src/assets/app/formulari-subscription-active.png?raw=true "Active Subscription Page")
 
+## Features
+
+- Navigation Component
+- Footer Component
+- Login Page
+- Registration Page
+- Forgot Password Page (Initiation)
+- Reset Password Page
+- Reset Password Success Page
+- Home Page
+- Not Found Page (404-Page)
+- Responsive Design
+- Component Routing
+- Pricing Page
+- Paypal Checkout
+- Create Templates with diverse components (text field, number field, single/multiple choice, rating, date, time, datetime, etc.)
+- Create Checks
+- Email Notifications
+- Handle Check Replies
+- Check Overview Page (Inbox, Outbox, Archive)
+- JWT Authorization/Authentication via HTTP Authorization Header
 
 ## Libs
 
-- Bootstrap
-
+- Bootstrap as css framework
+- expressjs and some additional express middlewares (e.g. cors, compression) to serve the frontend app
+- ngx-paypal to integrate the payment provider paypal
+- jwt-decode to extract information from the jwt token
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
 
