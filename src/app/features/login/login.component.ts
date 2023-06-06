@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.signIn(this.form.value).subscribe(
       (resp) => {
-        this.authService.setAuthenticated(true);
         this.notificationService.success("Du bist nun angemeldet");
         this.router.navigateByUrl('dashboard');
       },

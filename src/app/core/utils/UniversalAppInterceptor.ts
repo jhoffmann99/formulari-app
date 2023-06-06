@@ -1,58 +1,40 @@
-import { CookieService } from 'ngx-cookie-service';
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
+  HttpHeaders,
+  HttpErrorResponse,
   HttpResponse,
 } from '@angular/common/http';
-import { catchError, map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-//import { LoadingService } from '../services/loading.service';
-import { JWTService } from '../services/jwt.service';
 
 @Injectable()
 export class UniversalAppInterceptor implements HttpInterceptor {
-  private authService: AuthService;
-  constructor(
-    private readonly injector: Injector,
-    private readonly jwtService: JWTService,
-    private readonly router: Router,
-    private readonly cookieService: CookieService
-  ) //private readonly loadingService: LoadingService
-  {}
+  constructor(private authService: AuthService) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // this.loadingService.setLoading(true, req.url);
-    this.authService = this.injector.get(AuthService);
-    const token: string = this.authService.getToken();
-
-    if (token) {
-      // wenn der token abgelaufen ist wird dieser automatisch entfernt
-      if (this.jwtService.isTokenExpired(token)) {
-        this.cookieService.delete('formulari');
-        this.router.navigateByUrl('/home');
-      } else {
-        this.authService.setAuthenticated(true);
-      }
+    if (this.authService.isUserSignedin() && this.authService.getToken()) {
+      const request = req.clone({
+        headers: new HttpHeaders({
+          Authorization: this.authService.getToken(),
+        }),
+      });
+      return next.handle(request).pipe(
+        catchError((err) => {
+          if (err instanceof HttpErrorResponse && err.status === 401) {
+            this.authService.signOut();
+          }
+          return throwError(err);
+        })
+      );
     }
 
-    return next.handle(req).pipe(
-      catchError((err) => {
-        //this.loadingService.setLoading(false, req.url);
-        return err;
-      }),
-      map<HttpEvent<any>, any>((evt: HttpEvent<any>) => {
-        if (evt instanceof HttpResponse) {
-          //this.loadingService.setLoading(false, req.url);
-        }
-        return evt;
-      })
-    );
+    return next.handle(req);
   }
 }

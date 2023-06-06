@@ -24,24 +24,17 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
-    this.authService.signOut().subscribe(
-      (resp) => {
-        this.authService.setAuthenticated(false);
-        this.notificationService.success('Du wurdest erfolgreich abgemeldet');
-        this.router.navigateByUrl('home');
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.authService.signOut();
+    this.notificationService.success('Du wurdest erfolgreich abgemeldet');
+    this.router.navigateByUrl('home');
   }
 
   navigateToStart() {
-    if (this.authService.isAuthenticated) {
-      this.activeTab = 'dashboard'
+    if (this.authService.isUserSignedin) {
+      this.activeTab = 'dashboard';
       this.router.navigateByUrl('dashboard');
     } else {
-      this.activeTab = 'home'
+      this.activeTab = 'home';
       this.router.navigateByUrl('home');
     }
   }
@@ -50,5 +43,4 @@ export class NavigationComponent implements OnInit {
     this.activeTab = path;
     this.router.navigateByUrl(path);
   }
-
 }
